@@ -5,9 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cmb.o2o.cat.rack.dao.DistrictMapper;
 import com.cmb.o2o.cat.rack.dao.MallStoreRelMapper;
 import com.cmb.o2o.cat.rack.form.MissionConsoleForm;
-import com.cmb.o2o.cat.rack.model.District;
-import com.cmb.o2o.cat.rack.model.DistrictExample;
-import com.cmb.o2o.cat.rack.model.Store;
+import com.cmb.o2o.cat.rack.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.ArrayList;
@@ -23,7 +21,6 @@ public class MallService {
 
     public List<StoreBlog> queryMallDynamics(Integer mallId){
         List<Integer> storeIds = mallStoreRelMapper.queryStoreIdByMallId(mallId);
-        System.out.println("storeIds="+ JSONObject.toJSONString(storeIds));
         List<StoreBlog> retList = new ArrayList();
         storeIds.stream().forEach(storeId -> {
             StoreBlog storeBlog = mallStoreRelMapper.queryBlogByStoreId(storeId);

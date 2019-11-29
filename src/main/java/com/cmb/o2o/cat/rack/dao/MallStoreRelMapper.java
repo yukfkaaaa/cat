@@ -1,10 +1,9 @@
 package com.cmb.o2o.cat.rack.dao;
 
-import com.cmb.o2o.cat.rack.model.MallStoreRel;
-import com.cmb.o2o.cat.rack.model.MallStoreRelExample;
+import com.cmb.o2o.cat.rack.model.*;
+
 import java.util.List;
 
-import com.cmb.o2o.cat.rack.model.Store;
 import org.apache.ibatis.annotations.Param;
 
 public interface MallStoreRelMapper {

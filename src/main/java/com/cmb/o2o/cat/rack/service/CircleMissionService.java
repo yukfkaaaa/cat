@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.cmb.o2o.cat.rack.dao.*;
 import com.cmb.o2o.cat.rack.form.MissionConsoleForm;
 import com.cmb.o2o.cat.rack.model.*;
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.http.client.utils.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,17 +61,14 @@ public class CircleMissionService {
         List<Mission> missions = missionMapper.selectByDistrictId(districtId);
         RewardExample rewardExample = new RewardExample();
         RewardExample.Criteria cri =  rewardExample.createCriteria();
-
         for (Mission mission : missions){
             cri.andMissionIdEqualTo(mission.getId());
             List<Reward> rewards = rewardMapper.selectByExample(rewardExample);
             mission.setRewardList(rewards);
         }
-
         JSONObject res = new JSONObject();
         res.put("mall",district);
         res.put("missions",JSONObject.toJSONString(missions));
-
         return res;
     }
 
@@ -80,33 +78,36 @@ public class CircleMissionService {
         Integer districtId = form.getMallId();
         String[] storeIds = form.getStoreIds().split(",");
         String missionTitle = form.getMissionType();
-        String rewardsDesc = form.getRewardsDesc();
-        JSONArray rewardsArr = JSON.parseArray(rewardsDesc);
+
         Mission mission = new Mission();
         mission.setCreateTime(new Date());
         mission.setExpireTime(new Date());
         mission.setDistrictId(districtId);
         mission.setTitle(missionTitle);
-        int missisId = missionMapper.insert(mission);
+        int missionId = missionMapper.insert(mission);
 
         for(String storeId : storeIds){
             Store store = storeMapper.selectByPrimaryKey(Integer.valueOf(storeId));
             Task task = new Task();
-            task.setMissionId(missisId);
+            task.setMissionId(missionId);
             task.setStoreId(Integer.valueOf(storeId));
             task.setName(store.getName());
             taskMapper.insert(task);
         }
-        for (int i=0; i<rewardsArr.size();i++){
-            JSONObject rewardObj = rewardsArr.getJSONObject(i);
-            Reward reward = new Reward();
-            reward.setName(rewardObj.getString(""));
-            reward.setMissionId(missisId);
-            reward.setIcon("");
-            reward.setLevel(rewardObj.getInteger("level"));
-            rewardMapper.insert(reward);
-        }
 
+        String rewardsDesc = form.getRewardsDesc();
+        if(!org.springframework.util.StringUtils.isEmpty(rewardsDesc)){
+            JSONArray rewardsArr = JSON.parseArray(rewardsDesc);
+            for (int i=0; i<rewardsArr.size();i++){
+                JSONObject rewardObj = rewardsArr.getJSONObject(i);
+                Reward reward = new Reward();
+                reward.setName(rewardObj.getString(""));
+                reward.setMissionId(missionId);
+                reward.setIcon("");
+                reward.setLevel(rewardObj.getInteger("level"));
+                rewardMapper.insert(reward);
+            }
+        }
         return null;
     }
 

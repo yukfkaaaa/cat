@@ -7,7 +7,7 @@ public class UserMission {
 
     private Integer missionId;
 
-    private Integer userId;
+    private String userId;
 
     private Integer status;
 
@@ -15,7 +15,7 @@ public class UserMission {
 
     private Date createTime;
 
-    public UserMission(Integer id, Integer missionId, Integer userId, Integer status, Date finishTime, Date createTime) {
+    public UserMission(Integer id, Integer missionId, String userId, Integer status, Date finishTime, Date createTime) {
         this.id = id;
         this.missionId = missionId;
         this.userId = userId;
@@ -44,12 +44,12 @@ public class UserMission {
         this.missionId = missionId;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public Integer getStatus() {

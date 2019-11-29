@@ -120,7 +120,6 @@ public class MissionExample {
             return (Criteria) this;
         }
 
-
         public Criteria andIdNotEqualTo(Integer value) {
             addCriterion("id <>", value, "id");
             return (Criteria) this;

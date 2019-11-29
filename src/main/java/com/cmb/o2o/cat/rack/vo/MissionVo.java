@@ -20,7 +20,7 @@ public class MissionVo {
     /**
      * 子任务列表
      */
-    private List<TaskVo> taskVos;
+    private List<TaskVo> tasks;
 
     /**
      * 是否有奖励可以领取
@@ -48,12 +48,12 @@ public class MissionVo {
         this.title = title;
     }
 
-    public List<TaskVo> getTaskVos() {
-        return taskVos;
+    public List<TaskVo> getTasks() {
+        return tasks;
     }
 
-    public void setTaskVos(List<TaskVo> taskVos) {
-        this.taskVos = taskVos;
+    public void setTasks(List<TaskVo> tasks) {
+        this.tasks = tasks;
     }
 
     public Integer getHasUnclaimedReward() {

@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface DistrictMapper {
+    long countByExample(DistrictExample example);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(District record);
@@ -23,4 +25,6 @@ public interface DistrictMapper {
     int updateByPrimaryKeySelective(District record);
 
     int updateByPrimaryKey(District record);
+
+    List<District> selectAll();
 }

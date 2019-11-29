@@ -9,6 +9,7 @@
       <arg column="district_name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="address" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="open_hour" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="distance" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -70,7 +71,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, city_id, city_name, district_name, address, open_hour
+    id, city_id, city_name, district_name, address, open_hour, distance
   </sql>
   <select id="selectByExample" parameterType="com.cmb.o2o.cat.rack.model.DistrictExample" resultMap="BaseResultMap">
     select
@@ -102,9 +103,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into district (city_id, city_name, district_name, 
-      address, open_hour)
+      address, open_hour, distance
+      )
     values (#{cityId,jdbcType=INTEGER}, #{cityName,jdbcType=VARCHAR}, #{districtName,jdbcType=VARCHAR}, 
-      #{address,jdbcType=VARCHAR}, #{openHour,jdbcType=VARCHAR})
+      #{address,jdbcType=VARCHAR}, #{openHour,jdbcType=VARCHAR}, #{distance,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.cmb.o2o.cat.rack.model.District">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -127,6 +130,9 @@
       <if test="openHour != null">
         open_hour,
       </if>
+      <if test="distance != null">
+        distance,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="cityId != null">
@@ -144,8 +150,17 @@
       <if test="openHour != null">
         #{openHour,jdbcType=VARCHAR},
       </if>
+      <if test="distance != null">
+        #{distance,jdbcType=INTEGER},
+      </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.cmb.o2o.cat.rack.model.DistrictExample" resultType="java.lang.Long">
+    select count(*) from district
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update district
     <set>
@@ -167,6 +182,9 @@
       <if test="record.openHour != null">
         open_hour = #{record.openHour,jdbcType=VARCHAR},
       </if>
+      <if test="record.distance != null">
+        distance = #{record.distance,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -179,7 +197,8 @@
       city_name = #{record.cityName,jdbcType=VARCHAR},
       district_name = #{record.districtName,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
-      open_hour = #{record.openHour,jdbcType=VARCHAR}
+      open_hour = #{record.openHour,jdbcType=VARCHAR},
+      distance = #{record.distance,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -202,6 +221,9 @@
       <if test="openHour != null">
         open_hour = #{openHour,jdbcType=VARCHAR},
       </if>
+      <if test="distance != null">
+        distance = #{distance,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -211,7 +233,11 @@
       city_name = #{cityName,jdbcType=VARCHAR},
       district_name = #{districtName,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
-      open_hour = #{openHour,jdbcType=VARCHAR}
+      open_hour = #{openHour,jdbcType=VARCHAR},
+      distance = #{distance,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select * from district
+  </select>
 </mapper>

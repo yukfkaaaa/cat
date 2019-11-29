@@ -13,13 +13,16 @@ public class District {
 
     private String openHour;
 
-    public District(Integer id, Integer cityId, String cityName, String districtName, String address, String openHour) {
+    private Integer distance;
+
+    public District(Integer id, Integer cityId, String cityName, String districtName, String address, String openHour, Integer distance) {
         this.id = id;
         this.cityId = cityId;
         this.cityName = cityName;
         this.districtName = districtName;
         this.address = address;
         this.openHour = openHour;
+        this.distance = distance;
     }
 
     public District() {
@@ -72,5 +75,13 @@ public class District {
 
     public void setOpenHour(String openHour) {
         this.openHour = openHour == null ? null : openHour.trim();
+    }
+
+    public Integer getDistance() {
+        return distance;
+    }
+
+    public void setDistance(Integer distance) {
+        this.distance = distance;
     }
 }

@@ -17,7 +17,6 @@ import java.util.Map;
 @Controller
 @RequestMapping("/blog")
 public class BlogController {
-    //0-待审核，1-审核失败，2-上线，3-下线，4-删除
     @Autowired
     private BlogService blogService;
 
@@ -106,6 +105,16 @@ public class BlogController {
         Map<String,Object> retMap = new HashMap<>();
         retMap.put("blog",blog);
         retMap.put("pics",picAry);
+        return Response.succ(retMap);
+    }
+
+    @RequestMapping("/app/list")
+    @ResponseBody
+    public Response blogListInApp(Integer storeId){
+        List<Blog> blogList = blogService.fetchAllAvailable(storeId);
+        Map<String,Object> retMap = new HashMap<>();
+        retMap.put("rows",blogList);
+        retMap.put("size",blogList.size());
         return Response.succ(retMap);
     }
 }

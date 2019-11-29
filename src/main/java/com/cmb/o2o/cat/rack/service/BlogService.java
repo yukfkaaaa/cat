@@ -1,5 +1,7 @@
 package com.cmb.o2o.cat.rack.service;
 
+import com.cmb.o2o.cat.rack.common.BlogStatus;
+import com.cmb.o2o.cat.rack.common.PicStatus;
 import com.cmb.o2o.cat.rack.dao.BlogMapper;
 import com.cmb.o2o.cat.rack.dao.BlogPicMapper;
 import com.cmb.o2o.cat.rack.model.Blog;
@@ -27,7 +29,7 @@ public class BlogService {
             bp.setBlogId(0);
             bp.setCreateTime(new Date());
             bp.setPic(pic);
-            bp.setStatus(0);
+            bp.setStatus(PicStatus.UPLOAD);
             blogPicMapper.insert(bp);
             picIds.add(bp.getId());
         }
@@ -40,8 +42,8 @@ public class BlogService {
         blog.setText(text);
         blog.setCreateTime(new Date());
         blog.setUpdateTime(new Date());
-        blog.setStatus(0);
-        blog.setSpStatus(0);
+        blog.setStatus(BlogStatus.PREPARE);
+        blog.setSpStatus(BlogStatus.SP_NORMAL);
         blogMapper.insert(blog);
         return blog;
     }
@@ -68,7 +70,7 @@ public class BlogService {
     public List<Blog> fetchAll(Integer storeId) {
         BlogExample example = new BlogExample();
         BlogExample.Criteria criteria = example.createCriteria();
-        criteria.andStoreIdEqualTo(storeId);
+        criteria.andStoreIdEqualTo(storeId).andStatusNotEqualTo(BlogStatus.DELETE);
         return blogMapper.selectByExample(example);
     }
 
@@ -79,7 +81,11 @@ public class BlogService {
     public List<BlogPic> fetchPics(Integer id) {
         BlogPicExample example = new BlogPicExample();
         BlogPicExample.Criteria criteria = example.createCriteria();
-        criteria.andBlogIdEqualTo(id).andStatusEqualTo(1);
+        criteria.andBlogIdEqualTo(id).andStatusEqualTo(PicStatus.BIND);
         return blogPicMapper.selectByExample(example);
+    }
+
+    public List<Blog> fetchAllAvailable(Integer storeId) {
+        return null;
     }
 }

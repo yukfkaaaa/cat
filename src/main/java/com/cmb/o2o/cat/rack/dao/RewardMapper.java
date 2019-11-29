@@ -23,4 +23,6 @@ public interface RewardMapper {
     int updateByPrimaryKeySelective(Reward record);
 
     int updateByPrimaryKey(Reward record);
+
+    void deleteByMissionId(@Param("missionId")Integer missionId);
 }

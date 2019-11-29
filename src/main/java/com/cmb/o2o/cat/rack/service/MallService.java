@@ -44,7 +44,7 @@ public class MallService {
     public List<District> queryMalls(MissionConsoleForm form){
         DistrictExample districtExample=new DistrictExample();
         DistrictExample.Criteria criteria=districtExample.createCriteria();
-        criteria.andDistrictNameLike(form.getMallName()).andCityNameEqualTo(form.getCityName());
+        criteria.andDistrictNameLike("%"+form.getMallName()+"%").andCityNameEqualTo(form.getCityName());
 
         return districtMapper.selectByExample(districtExample);
     }

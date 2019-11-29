@@ -199,4 +199,8 @@
       mission_id = #{missionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <delete id="deleteByMissionId" parameterType="java.lang.String">
+    delete from reward
+    where mission_id=#{missionId,jdbcType=INTEGER}
+  </delete>
 </mapper>

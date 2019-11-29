@@ -1,34 +1,15 @@
 package com.cmb.o2o.cat.rack.vo;
 
 /**
- * @author dragic
- * @create 2019/11/29 16:33
+ * Created by qiqing on 2019/11/29.
  */
-public class TaskVo {
-    /**
-     * 子任务id
-     */
+public class RewardVO {
+
     private Integer id;
 
-    /**
-     * 子任务名称
-     */
     private String name;
 
-    /**
-     * 子任务完成状态
-     */
     private Integer status;
-
-    private Integer storeId;
-
-    public Integer getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
-    }
 
     public Integer getId() {
         return id;

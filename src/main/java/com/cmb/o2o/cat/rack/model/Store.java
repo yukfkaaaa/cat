@@ -15,7 +15,9 @@ public class Store {
 
     private Integer districtId;
 
-    public Store(Integer id, String name, String address, String longitude, String latitude, String openTime, Integer districtId) {
+    private String type;
+
+    public Store(Integer id, String name, String address, String longitude, String latitude, String openTime, Integer districtId, String type) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -23,6 +25,7 @@ public class Store {
         this.latitude = latitude;
         this.openTime = openTime;
         this.districtId = districtId;
+        this.type = type;
     }
 
     public Store() {
@@ -83,5 +86,13 @@ public class Store {
 
     public void setDistrictId(Integer districtId) {
         this.districtId = districtId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
     }
 }

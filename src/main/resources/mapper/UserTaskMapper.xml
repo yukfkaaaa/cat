@@ -184,4 +184,7 @@
       finish_time = #{finishTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getCompleteTask">
+    select * from user_task where user_id=#{userId} and task_id=#{taskId}
+  </select>
 </mapper>

@@ -199,4 +199,7 @@
       desc = #{desc,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getTaskByMissionId" resultMap="BaseResultMap">
+    select * from task where mission_id=#{missionId}
+  </select>
 </mapper>

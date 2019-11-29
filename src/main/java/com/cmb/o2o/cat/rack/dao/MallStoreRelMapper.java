@@ -3,6 +3,8 @@ package com.cmb.o2o.cat.rack.dao;
 import com.cmb.o2o.cat.rack.model.MallStoreRel;
 import com.cmb.o2o.cat.rack.model.MallStoreRelExample;
 import java.util.List;
+
+import com.cmb.o2o.cat.rack.model.StoreBlog;
 import org.apache.ibatis.annotations.Param;
 
 public interface MallStoreRelMapper {
@@ -23,4 +25,8 @@ public interface MallStoreRelMapper {
     int updateByPrimaryKeySelective(MallStoreRel record);
 
     int updateByPrimaryKey(MallStoreRel record);
+
+    List<StoreBlog> queryByMallId(Integer mallId);
+
+    
 }

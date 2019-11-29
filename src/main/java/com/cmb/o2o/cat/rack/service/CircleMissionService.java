@@ -75,23 +75,25 @@ public class CircleMissionService {
 
     /*新增或编辑任务*/
     public List<Map<String,Object>> addOrUpdateMission(MissionConsoleForm form){
+        int missionId = 0;
         if(form.getMissionId() != null && form.getMissionId()>0){
-            missionMapper.deleteByPrimaryKey(form.getMissionId());
-            taskMapper.deleteByMissionId(form.getMissionId());
-            rewardMapper.deleteByMissionId(form.getMissionId());
+            missionId = form.getMissionId();
+            missionMapper.deleteByPrimaryKey(missionId);
+            taskMapper.deleteByMissionId(missionId);
+            rewardMapper.deleteByMissionId(missionId);
         }
-
-
         Integer districtId = form.getMallId();
         String[] storeIds = form.getStoreIds().split(",");
         String missionTitle = form.getMissionType();
 
-        Mission mission = new Mission();
-        mission.setCreateTime(new Date());
-        mission.setExpireTime(new Date());
-        mission.setDistrictId(districtId);
-        mission.setTitle(missionTitle);
-        int missionId = missionMapper.insert(mission);
+        if(missionId==0){
+            Mission mission = new Mission();
+            mission.setCreateTime(new Date());
+            mission.setExpireTime(new Date());
+            mission.setDistrictId(districtId);
+            mission.setTitle(missionTitle);
+            missionId = missionMapper.insert(mission);
+        }
 
         for(String storeId : storeIds){
             Store store = storeMapper.selectByPrimaryKey(Integer.valueOf(storeId));

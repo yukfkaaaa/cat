@@ -63,20 +63,9 @@ public class UserMissionController {
     public Response applyReward(Integer missionId, String openId, Integer rewardId) {
 
 
-        UserRewardExample example = new UserRewardExample();
-        UserRewardExample.Criteria criteria = example.createCriteria();
-        criteria.andUserIdEqualTo(openId);
-        criteria.andRewardIdEqualTo(rewardId);
-        criteria.andMissionIdEqualTo(missionId);
 
-        List<UserReward> list = userRewardMapper.selectByExample(example);
-        if (CollectionUtils.isEmpty(list)) {
-            UserReward userReward = new UserReward();
-            userReward.setMissionId(missionId);
-            userReward.setUserId(openId);
-            userReward.setRewardId(rewardId);
-            userReward.setGetTime(new Date());
-            userRewardMapper.insert(userReward);
+        boolean flag=userMissionService.getReward(missionId,openId,rewardId);
+        if (flag) {
             return Response.succ();
         } else {
             return Response.fail("您已领取该奖励");

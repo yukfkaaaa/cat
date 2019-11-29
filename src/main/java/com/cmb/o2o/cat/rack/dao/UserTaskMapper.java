@@ -23,4 +23,7 @@ public interface UserTaskMapper {
     int updateByPrimaryKeySelective(UserTask record);
 
     int updateByPrimaryKey(UserTask record);
+
+    List<UserTask> getCompleteTaskByMissionIdByUserId(@Param("userId") String userId, @Param("missionId") Integer missionId);
+
 }

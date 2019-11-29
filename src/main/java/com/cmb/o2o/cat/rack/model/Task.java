@@ -9,14 +9,14 @@ public class Task {
 
     private Integer storeId;
 
-    private String desc;
+    private String description;
 
-    public Task(Integer id, String name, Integer missionId, Integer storeId, String desc) {
+    public Task(Integer id, String name, Integer missionId, Integer storeId, String description) {
         this.id = id;
         this.name = name;
         this.missionId = missionId;
         this.storeId = storeId;
-        this.desc = desc;
+        this.description = description;
     }
 
     public Task() {
@@ -55,11 +55,11 @@ public class Task {
         this.storeId = storeId;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
     }
 }

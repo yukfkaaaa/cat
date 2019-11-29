@@ -23,4 +23,6 @@ public interface UserMissionMapper {
     int updateByPrimaryKeySelective(UserMission record);
 
     int updateByPrimaryKey(UserMission record);
+
+    List<UserMission> selectByUserIdAndMissionId(@Param("userId") String userId, @Param("missionId")Integer missionId);
 }

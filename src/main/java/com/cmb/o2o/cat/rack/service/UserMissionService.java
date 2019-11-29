@@ -51,7 +51,7 @@ public class UserMissionService {
         userMissionMapper.insert(userMission);
     }
 
-    public boolean getReward(Integer missionId, String openId, Integer rewardId){
+    public boolean  getReward(Integer missionId, String openId, Integer rewardId){
 
         UserRewardExample example = new UserRewardExample();
         UserRewardExample.Criteria criteria = example.createCriteria();
@@ -74,7 +74,6 @@ public class UserMissionService {
             }else {
                 StaticMap.delete(openId+"_"+missionId);
             }
-
             return true;
         }
 

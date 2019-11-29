@@ -110,7 +110,7 @@ public class CircleMissionService {
             for (int i=0; i<rewardsArr.size();i++){
                 JSONObject rewardObj = rewardsArr.getJSONObject(i);
                 Reward reward = new Reward();
-                reward.setName(rewardObj.getString(""));
+                reward.setName(rewardObj.getString("rewardName"));
                 reward.setMissionId(missionId);
                 reward.setIcon("");
                 reward.setLevel(rewardObj.getInteger("level"));

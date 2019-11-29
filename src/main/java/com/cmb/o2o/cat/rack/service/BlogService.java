@@ -44,17 +44,19 @@ public class BlogService {
         blog.setUpdateTime(new Date());
         blog.setStatus(BlogStatus.PREPARE);
         blog.setSpStatus(BlogStatus.SP_NORMAL);
+        blog.setMsg("");
+        blog.setReportNum(0);
         blogMapper.insert(blog);
         return blog;
     }
 
-    public void bindPics(Integer blogId, String[] pics) {
-        List<String> picAry = Arrays.asList(pics);
+    public void bindPics(Integer blogId, List<Integer> pics) {
         BlogPicExample example = new BlogPicExample();
         BlogPicExample.Criteria criteria = example.createCriteria();
-        criteria.andPicIn(picAry);
+        criteria.andIdIn(pics);
         BlogPic param = new BlogPic();
         param.setBlogId(blogId);
+        param.setStatus(PicStatus.BIND);
         blogPicMapper.updateByExampleSelective(param,example);
     }
 
@@ -71,6 +73,7 @@ public class BlogService {
         BlogExample example = new BlogExample();
         BlogExample.Criteria criteria = example.createCriteria();
         criteria.andStoreIdEqualTo(storeId).andStatusNotEqualTo(BlogStatus.DELETE);
+        example.setOrderByClause("update_time desc");
         return blogMapper.selectByExample(example);
     }
 
@@ -111,6 +114,7 @@ public class BlogService {
         BlogExample example = new BlogExample();
         BlogExample.Criteria criteria = example.createCriteria();
         criteria.andStoreIdEqualTo(storeId).andStatusIn(status);
+        example.setOrderByClause("update_time desc");
         return blogMapper.selectByExample(example);
     }
 

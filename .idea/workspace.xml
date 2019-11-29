@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="31abea6b-8c1e-449c-95ad-7d5a4bf0e938" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/cmb/o2o/cat/rack/controller/MallController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/cmb/o2o/cat/rack/controller/MallController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/cmb/o2o/cat/rack/controller/MallController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,7 +44,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/com/cmb/o2o/cat/rack/controller/MallController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
-              <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+              <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,7 +191,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575007599518" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575007634998" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -232,12 +231,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1575006358769</updated>
-      <workItem from="1575006365194" duration="1037000" />
+      <workItem from="1575006365194" duration="1865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1037000" />
+    <option name="totallyTimeSpent" value="1865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -313,7 +312,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/cmb/o2o/cat/rack/controller/MallController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
-          <caret line="11" column="8" lean-forward="true" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

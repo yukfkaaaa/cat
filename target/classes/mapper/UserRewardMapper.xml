@@ -6,7 +6,7 @@
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="mission_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="reward_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="get_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
@@ -102,7 +102,7 @@
     </selectKey>
     insert into user_reward (mission_id, reward_id, user_id, 
       get_time)
-    values (#{missionId,jdbcType=INTEGER}, #{rewardId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+    values (#{missionId,jdbcType=INTEGER}, #{rewardId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
       #{getTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.cmb.o2o.cat.rack.model.UserReward">
@@ -132,7 +132,7 @@
         #{rewardId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="getTime != null">
         #{getTime,jdbcType=TIMESTAMP},
@@ -152,7 +152,7 @@
         reward_id = #{record.rewardId,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.getTime != null">
         get_time = #{record.getTime,jdbcType=TIMESTAMP},
@@ -167,7 +167,7 @@
     set id = #{record.id,jdbcType=INTEGER},
       mission_id = #{record.missionId,jdbcType=INTEGER},
       reward_id = #{record.rewardId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=VARCHAR},
       get_time = #{record.getTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -183,7 +183,7 @@
         reward_id = #{rewardId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="getTime != null">
         get_time = #{getTime,jdbcType=TIMESTAMP},
@@ -195,7 +195,7 @@
     update user_reward
     set mission_id = #{missionId,jdbcType=INTEGER},
       reward_id = #{rewardId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
       get_time = #{getTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>

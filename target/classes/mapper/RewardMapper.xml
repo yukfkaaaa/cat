@@ -7,6 +7,7 @@
       <arg column="name" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="icon" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="level" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="mission_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -68,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, icon, level
+    id, name, icon, level, mission_id
   </sql>
   <select id="selectByExample" parameterType="com.cmb.o2o.cat.rack.model.RewardExample" resultMap="BaseResultMap">
     select
@@ -99,10 +100,10 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into reward (name, icon, level
-      )
-    values (#{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}
-      )
+    insert into reward (name, icon, level, 
+      mission_id)
+    values (#{name,jdbcType=VARCHAR}, #{icon,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{missionId,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.cmb.o2o.cat.rack.model.Reward">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -119,6 +120,9 @@
       <if test="level != null">
         level,
       </if>
+      <if test="missionId != null">
+        mission_id,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -129,6 +133,9 @@
       </if>
       <if test="level != null">
         #{level,jdbcType=INTEGER},
+      </if>
+      <if test="missionId != null">
+        #{missionId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -147,6 +154,9 @@
       <if test="record.level != null">
         level = #{record.level,jdbcType=INTEGER},
       </if>
+      <if test="record.missionId != null">
+        mission_id = #{record.missionId,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -157,7 +167,8 @@
     set id = #{record.id,jdbcType=INTEGER},
       name = #{record.name,jdbcType=VARCHAR},
       icon = #{record.icon,jdbcType=VARCHAR},
-      level = #{record.level,jdbcType=INTEGER}
+      level = #{record.level,jdbcType=INTEGER},
+      mission_id = #{record.missionId,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -174,6 +185,9 @@
       <if test="level != null">
         level = #{level,jdbcType=INTEGER},
       </if>
+      <if test="missionId != null">
+        mission_id = #{missionId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -181,7 +195,8 @@
     update reward
     set name = #{name,jdbcType=VARCHAR},
       icon = #{icon,jdbcType=VARCHAR},
-      level = #{level,jdbcType=INTEGER}
+      level = #{level,jdbcType=INTEGER},
+      mission_id = #{missionId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

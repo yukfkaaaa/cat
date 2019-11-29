@@ -10,6 +10,26 @@
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
     </constructor>
   </resultMap>
+
+  <resultMap id="StoreBlogMap" type="com.cmb.o2o.cat.rack.model.StoreBlog">
+    <id column="id" property="id" jdbcType="INTEGER"/>
+    <result column="store_id" property="storeId" jdbcType="INTEGER"/>
+    <result column="blog_id" property="blogId" jdbcType="INTEGER"/>
+    <result column="text" property="content" jdbcType="VARCHAR"/>
+    <collection property="pics" ofType="com.cmb.o2o.cat.rack.model.Picture" javaType="java.util.List">
+      <result column="pic" property="picture" jdbcType="VARCHAR"/>
+    </collection>
+  </resultMap>
+
+  <resultMap id="StoreBlogDetailMap" type="com.cmb.o2o.cat.rack.model.StoreBlogDetail">
+    <id column="id" property="id" jdbcType="INTEGER"/>
+    <result column="content" property="content" jdbcType="VARCHAR"/>
+    <result column="datetime" property="datetime" jdbcType="VARCHAR"/>
+    <collection property="pics" ofType="com.cmb.o2o.cat.rack.model.Picture" javaType="java.util.List">
+      <result column="pic" property="picture" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -71,6 +91,37 @@
   <sql id="Base_Column_List">
     id, mall_id, store_id, create_time, update_time
   </sql>
+  <select id="queryByMallId" parameterType="java.lang.Integer" resultMap="StoreBlogMap">
+    select
+          a.mall_id as mall_id,
+          a.store_id as store_id,
+          b.text as content,
+          c.pic as pic
+    from mall_store_rel a, store_blog b, blog_pic c
+    where a.mall_id = #{mallId}
+    and a.store_id = b.store_id
+    and b.status = 1
+    and b.id = c.blog_id
+    group by a.store_id
+    order by c.create_time
+    limie 1
+  </select>
+
+
+  <select id="queryStoreBlogByStoreId" parameterType="java.lang.Integer" resultMap="StoreBlogDetailMap">
+ select
+	s.id as id,
+	s.text as content,
+	b.pic as pic,
+	s.update_time as datetime
+from store_blog s
+left join blog_pic b on b.blog_id = s.id
+where s.store_id = #{storeId}
+and s.`status` = 2
+and b.`status` =1
+order by s.update_time desc;
+  </select>
+
   <select id="selectByExample" parameterType="com.cmb.o2o.cat.rack.model.MallStoreRelExample" resultMap="BaseResultMap">
     select
     <if test="distinct">

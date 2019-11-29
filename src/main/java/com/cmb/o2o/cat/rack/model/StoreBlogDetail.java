@@ -1,5 +1,6 @@
 package com.cmb.o2o.cat.rack.model;
 
+import java.util.Date;
 import java.util.List;
 
 /**

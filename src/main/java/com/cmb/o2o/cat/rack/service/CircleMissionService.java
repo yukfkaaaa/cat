@@ -42,13 +42,4 @@ public class CircleMissionService {
         List<Task> tasks = taskMapper.getTaskByMissionId(missionId);
         return tasks;
     }
-
-    public List<UserTask> getCompleteTask(String userId, Integer taskId) {
-        userTaskMapper.selectCompleteTask(userId, taskId);
-    }
-
-    public List<UserReward> getUserReward() {
-
-    }
-
 }

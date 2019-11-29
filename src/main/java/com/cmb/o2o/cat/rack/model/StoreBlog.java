@@ -4,6 +4,8 @@ import java.util.List;
 
 public class StoreBlog {
 
+    private Integer mallId;
+
     private Integer storeId;
 
     private Integer blogId;
@@ -21,6 +23,14 @@ public class StoreBlog {
     private Integer liked;
 
     private List<Coupon> coupons;
+
+    public Integer getMallId() {
+        return mallId;
+    }
+
+    public void setMallId(Integer mallId) {
+        this.mallId = mallId;
+    }
 
     public Integer getStoreId() {
         return storeId;

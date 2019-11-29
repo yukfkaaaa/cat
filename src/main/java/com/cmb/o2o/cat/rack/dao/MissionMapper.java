@@ -23,4 +23,12 @@ public interface MissionMapper {
     int updateByPrimaryKeySelective(Mission record);
 
     int updateByPrimaryKey(Mission record);
+
+    /**
+     * 通过商圈id取该商圈下的所有mission
+     * @param districtId 商圈id
+     * @return mission list
+     */
+    List<Mission> selectByDistrictId(@Param("districtId") Integer districtId);
+
 }

@@ -1,6 +1,7 @@
 package com.cmb.o2o.cat.rack.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Mission {
     private Integer id;
@@ -12,6 +13,8 @@ public class Mission {
     private Integer districtId;
 
     private Date expireTime;
+
+    private List<Reward> rewardList;
 
     public Mission(Integer id, String title, Date createTime, Integer districtId, Date expireTime) {
         this.id = id;
@@ -63,5 +66,13 @@ public class Mission {
 
     public void setExpireTime(Date expireTime) {
         this.expireTime = expireTime;
+    }
+
+    public List<Reward> getRewardList() {
+        return rewardList;
+    }
+
+    public void setRewardList(List<Reward> rewardList) {
+        this.rewardList = rewardList;
     }
 }

@@ -9,11 +9,15 @@ public final class StaticMap {
 
     private static final ConcurrentHashMap<String,Object> M_MAP=new ConcurrentHashMap<>(64);
 
-    public static void put(String key,String value){
+    public static void put(String key,Object value){
         M_MAP.put(key,value);
     }
 
-    public static void get(String key){
-        M_MAP.get(key);
+    public static Object get(String key){
+        return M_MAP.get(key);
+    }
+
+    public static void delete(String key){
+        M_MAP.remove(key);
     }
 }

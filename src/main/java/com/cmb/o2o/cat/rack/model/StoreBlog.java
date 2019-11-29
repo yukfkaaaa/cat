@@ -24,6 +24,8 @@ public class StoreBlog {
 
     private List<Coupon> coupons;
 
+    private String pic;
+
     public Integer getMallId() {
         return mallId;
     }
@@ -102,6 +104,14 @@ public class StoreBlog {
 
     public void setCoupons(List<Coupon> coupons) {
         this.coupons = coupons;
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 }
 

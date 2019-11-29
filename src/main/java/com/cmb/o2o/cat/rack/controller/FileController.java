@@ -40,14 +40,12 @@ public class FileController {
         while(iterator.hasNext()){
             Map.Entry<String,MultipartFile> entry = iterator.next();
             MultipartFile file = entry.getValue();
-            String basePath = mRequest.getSession().getServletContext().getContextPath()+"/static/pic/";
             String fileUrl = null;
             try {
-                fileUrl = fileUploader.uploadPic(basePath,file);
+                fileUrl = fileUploader.uploadPic(file);
                 fileList.add(fileUrl);
             } catch (IOException e) {
                 logger.error("上传失败",e);
-                fileUploader.deletePic(fileList);
                 return Response.fail("上传失败");
             }
         }

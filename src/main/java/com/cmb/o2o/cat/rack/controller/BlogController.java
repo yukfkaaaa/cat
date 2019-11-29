@@ -28,8 +28,12 @@ public class BlogController {
         if(blog == null){
             return Response.fail("创建失败");
         }
-        if(pics.length > 0){
-            blogService.bindPics(blog.getId(),pics);
+        if(pics!=null && pics.length > 0){
+            List<Integer> picAry = new ArrayList<>(pics.length);
+            for(String p : pics){
+                picAry.add(Integer.valueOf(p));
+            }
+            blogService.bindPics(blog.getId(),picAry);
         }
         Map<String,Object> retMap = new HashMap<>();
         retMap.put("succ",true);

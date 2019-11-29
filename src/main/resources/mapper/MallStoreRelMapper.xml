@@ -90,8 +90,7 @@
       id as blog_id,
       text as text
     from store_blog
-    where status = 2
-    and id = (select max(id) from store_blog where store_id = #{storeId})
+    where id = (select max(id) from store_blog where store_id = #{storeId} and status = 2)
   </select>
 
   <select id="queryPicsByBlogId" parameterType="Integer" resultType="String">
@@ -106,7 +105,7 @@
   </select>
 
   <select id="queryStoreById" parameterType="Integer" resultType="com.cmb.o2o.cat.rack.model.Store">
-    select name
+    select name,pic
     from store
     where id = #{storeId}
   </select>

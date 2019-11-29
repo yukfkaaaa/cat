@@ -24,12 +24,15 @@ public class MallService {
         List<StoreBlog> retList = new ArrayList();
         storeIds.stream().forEach(storeId -> {
             StoreBlog storeBlog = mallStoreRelMapper.queryBlogByStoreId(storeId);
-            List<String> pics = mallStoreRelMapper.queryPicsByBlogId(storeBlog.getBlogId());
-            Store store = mallStoreRelMapper.queryStoreById(storeId);
-            storeBlog.setStoreName(store.getName());
-            storeBlog.setMallId(mallId);
-            storeBlog.setPics(pics);
-            retList.add(storeBlog);
+            if(storeBlog != null){
+                List<String> pics = mallStoreRelMapper.queryPicsByBlogId(storeBlog.getBlogId());
+                Store store = mallStoreRelMapper.queryStoreById(storeId);
+                storeBlog.setStoreName(store.getName());
+                storeBlog.setMallId(mallId);
+                storeBlog.setPics(pics);
+                storeBlog.setPic(store.getPic());
+                retList.add(storeBlog);
+            }
         });
         return retList;
     }

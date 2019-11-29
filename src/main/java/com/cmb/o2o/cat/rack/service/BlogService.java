@@ -81,7 +81,7 @@ public class BlogService {
     public List<Blog> fetchOnline(Integer storeId) {
         BlogExample example = new BlogExample();
         BlogExample.Criteria criteria = example.createCriteria();
-        criteria.andStoreIdEqualTo(storeId).andStatusNotEqualTo(BlogStatus.ONLINE);
+        criteria.andStoreIdEqualTo(storeId).andStatusEqualTo(BlogStatus.ONLINE);
         return blogMapper.selectByExample(example);
     }
 

@@ -13,7 +13,7 @@ public final class StaticMap {
         M_MAP.put(key,value);
     }
 
-    public static void get(String key){
-        M_MAP.get(key);
+    public static Object get(String key){
+        return M_MAP.get(key);
     }
 }

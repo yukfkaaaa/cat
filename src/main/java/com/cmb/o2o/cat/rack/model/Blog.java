@@ -21,7 +21,9 @@ public class Blog {
 
     private String msg;
 
-    public Blog(Integer id, Integer storeId, String text, Integer status, Date createTime, Date updateTime, Integer spStatus, Integer reportNum, String msg) {
+    private Integer likeNum;
+
+    public Blog(Integer id, Integer storeId, String text, Integer status, Date createTime, Date updateTime, Integer spStatus, Integer reportNum, String msg, Integer likeNum) {
         this.id = id;
         this.storeId = storeId;
         this.text = text;
@@ -31,6 +33,7 @@ public class Blog {
         this.spStatus = spStatus;
         this.reportNum = reportNum;
         this.msg = msg;
+        this.likeNum = likeNum;
     }
 
     public Blog() {
@@ -107,5 +110,13 @@ public class Blog {
 
     public void setMsg(String msg) {
         this.msg = msg == null ? null : msg.trim();
+    }
+
+    public Integer getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(Integer likeNum) {
+        this.likeNum = likeNum;
     }
 }

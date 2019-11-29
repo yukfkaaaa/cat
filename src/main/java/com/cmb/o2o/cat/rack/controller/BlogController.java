@@ -8,6 +8,7 @@ import com.cmb.o2o.cat.rack.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -137,10 +138,19 @@ public class BlogController {
         return Response.succ(retMap);
     }
 
-    @RequestMapping(value="/app/report")
+    @RequestMapping("/app/report")
     @ResponseBody
     public Response reportBlog(Integer blogId){
+        System.out.println("report blogId="+blogId);
         blogService.reportBlog(blogId);
+        return Response.succ();
+    }
+
+    @RequestMapping("/app/like")
+    @ResponseBody
+    public Response likeBlog(Integer blogId){
+        System.out.println("like blogId="+blogId);
+        blogService.likeBlog(blogId);
         return Response.succ();
     }
 }

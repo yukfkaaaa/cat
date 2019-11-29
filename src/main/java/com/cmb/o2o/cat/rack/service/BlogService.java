@@ -105,7 +105,18 @@ public class BlogService {
         BlogExample.Criteria criteria = example.createCriteria();
         criteria.andIdEqualTo(blogId);
         Blog blog = new Blog();
-        blog.setReportNum(blog.getReportNum()+1);
+        blog.setReportNum((blog.getReportNum()==null? 0 : blog.getReportNum()) + 1);
+        System.out.println("reportNum="+ blog.getReportNum());
+        blogMapper.updateByExampleSelective(blog,example);
+    }
+
+    public void likeBlog(Integer blogId){
+        BlogExample example = new BlogExample();
+        BlogExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(blogId);
+        Blog blog = new Blog();
+        blog.setLikeNum((blog.getLikeNum()==null? 0 : blog.getLikeNum()) + 1);
+        System.out.println("likeNum="+ blog.getLikeNum());
         blogMapper.updateByExampleSelective(blog,example);
     }
 

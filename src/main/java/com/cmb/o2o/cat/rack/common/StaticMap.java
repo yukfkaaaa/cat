@@ -9,7 +9,7 @@ public final class StaticMap {
 
     private static final ConcurrentHashMap<String,Object> M_MAP=new ConcurrentHashMap<>(64);
 
-    public static void put(String key,String value){
+    public static void put(String key,Object value){
         M_MAP.put(key,value);
     }
 

@@ -28,6 +28,7 @@ public class MissionVo {
     private List<RewardVO> rewards;
 
 
+
     /**
      * 是否有奖励可以领取
      */
@@ -55,6 +56,7 @@ public class MissionVo {
     }
 
 
+
     public List<TaskVo> getTasks() {
         return tasks;
     }
@@ -77,6 +79,7 @@ public class MissionVo {
 
     public void setRewards(List<RewardVO> rewards) {
         this.rewards = rewards;
+
     }
 
     public Integer getHasUnclaimedReward() {

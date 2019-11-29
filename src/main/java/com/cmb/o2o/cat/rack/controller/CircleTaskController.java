@@ -62,8 +62,8 @@ public class CircleTaskController {
     }
 
 
-    private MissionVo getMissionVo(Mission mission,String openid){
-        List<UserMission> userMissions = service.getUserMissionByUserId(openid, mission.getId());
+    private MissionVo getMissionVo(Mission mission,String openId){
+        List<UserMission> userMissions = service.getUserMissionByUserId(openId, mission.getId());
         MissionVo missionVo=new MissionVo();
         missionVo.setId(mission.getId());
         missionVo.setTitle(mission.getTitle());
@@ -85,7 +85,7 @@ public class CircleTaskController {
 
         }else {
             missionVo.setStatus(1);
-            List<UserTask> userTaskList=userTaskMapper.getCompleteTaskByMissionIdByUserId(openid,mission.getId());
+            List<UserTask> userTaskList=userTaskMapper.getCompleteTaskByMissionIdByUserId(openId,mission.getId());
 
             for(TaskVo taskVo:missionVo.getTasks()){
                 for(UserTask userTask:userTaskList){
@@ -101,13 +101,14 @@ public class CircleTaskController {
 
     @RequestMapping("/mission/list")
     public Response missionList(CircleMissionListForm form)  {
-        String openid = form.getOpenid();
+        String openid = form.getOpenId();
         Integer mallId = form.getMallId();
         List<Mission> missions = service.getMissionListByMallId(mallId);
         List<MissionVo> missionVoList=new ArrayList<>(missions.size());
 
         for (Mission mission : missions) {
             MissionVo missionVo=getMissionVo(mission,openid);
+
             missionVoList.add(missionVo);
 
         }
@@ -137,6 +138,7 @@ public class CircleTaskController {
             storeVo.setDistance(300);
             storeVoList.add(storeVo);
         }
+        missionVo.setStores(storeVoList);
 
         UserRewardExample example = new UserRewardExample();
         UserRewardExample.Criteria criteria = example.createCriteria();

@@ -74,6 +74,14 @@ public class BlogService {
         return blogMapper.selectByExample(example);
     }
 
+//    拉取在线的 Blog
+    public List<Blog> fetchOnline(Integer storeId) {
+        BlogExample example = new BlogExample();
+        BlogExample.Criteria criteria = example.createCriteria();
+        criteria.andStoreIdEqualTo(storeId).andStatusNotEqualTo(BlogStatus.ONLINE);
+        return blogMapper.selectByExample(example);
+    }
+
     public Blog fetchOne(Integer blogId) {
         return blogMapper.selectByPrimaryKey(blogId);
     }

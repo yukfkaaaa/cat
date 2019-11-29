@@ -89,7 +89,7 @@ public class CircleTaskController {
 
             for(TaskVo taskVo:missionVo.getTasks()){
                 for(UserTask userTask:userTaskList){
-                    if(taskVo.getId().equals(userTask.getId())){
+                    if(taskVo.getId().equals(userTask.getTaskId())){
                         taskVo.setStatus(1);
                     }
                 }

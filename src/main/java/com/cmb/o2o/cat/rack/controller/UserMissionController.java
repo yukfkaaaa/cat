@@ -77,6 +77,7 @@ public class UserMissionController {
     public Response finishMissionTask(String openId, Integer taskId, Integer missionId) {
 
 
+        userMissionService.finishMissionTask(openId,taskId,missionId);
 
         return Response.succ();
 

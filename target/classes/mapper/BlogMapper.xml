@@ -231,4 +231,10 @@
       sp_status = #{spStatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="reportBlog" parameterType="java.lang.Integer">
+    update store_blog
+    set report_num = report_num+1
+    where id = #{blogId}
+  </update>
 </mapper>

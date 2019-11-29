@@ -54,7 +54,7 @@ public class StoreController {
         retMap.put("id",store.getId());
         retMap.put("name",store.getName());
         retMap.put("address",store.getAddress());
-
+        retMap.put("type", store.getType());
 
         List<Blog> blogList = blogService.fetchOnline(storeId);
         if (blogList == null ) {

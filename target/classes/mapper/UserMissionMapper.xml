@@ -214,4 +214,9 @@
       create_time = #{createTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByUserIdAndMissionId" resultMap="BaseResultMap">
+    select * from user_mission
+    where user_id=#{userId} and mission_id=#{missionId}
+  </select>
 </mapper>

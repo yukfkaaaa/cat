@@ -3,11 +3,13 @@ com/cmb/o2o/cat/rack/model/MissionExample$GeneratedCriteria.class
 com/cmb/o2o/cat/rack/model/Store.class
 com/cmb/o2o/cat/rack/model/UserRewardExample$Criteria.class
 com/cmb/o2o/cat/rack/model/TaskExample$Criteria.class
+com/cmb/o2o/cat/rack/form/CircleMissionListForm.class
 com/cmb/o2o/cat/rack/model/RewardExample$Criteria.class
 com/cmb/o2o/cat/rack/model/StoreExample$Criterion.class
 com/cmb/o2o/cat/rack/model/Coupon.class
 com/cmb/o2o/cat/rack/model/MallStoreRelExample.class
 com/cmb/o2o/cat/rack/model/StoreBlogDetail.class
+com/cmb/o2o/cat/rack/vo/MissionVo.class
 com/cmb/o2o/cat/rack/dao/UserRewardMapper.class
 com/cmb/o2o/cat/rack/model/StoreExample$GeneratedCriteria.class
 com/cmb/o2o/cat/rack/model/Task.class
@@ -24,6 +26,7 @@ com/cmb/o2o/cat/rack/dao/DistrictMapper.class
 com/cmb/o2o/cat/rack/model/UserTaskExample$Criterion.class
 com/cmb/o2o/cat/rack/model/MallStoreRel.class
 com/cmb/o2o/cat/rack/model/RewardExample$GeneratedCriteria.class
+com/cmb/o2o/cat/rack/vo/RewardVO.class
 com/cmb/o2o/cat/rack/model/MissionExample.class
 com/cmb/o2o/cat/rack/dao/MallStoreRelMapper.class
 com/cmb/o2o/cat/rack/dao/MissionMapper.class
@@ -56,13 +59,17 @@ com/cmb/o2o/cat/rack/dao/BlogPicMapper.class
 com/cmb/o2o/cat/rack/controller/MallController.class
 com/cmb/o2o/cat/rack/common/PicStatus.class
 com/cmb/o2o/cat/rack/model/UserTaskExample$Criteria.class
+com/cmb/o2o/cat/rack/vo/TaskVo.class
 com/cmb/o2o/cat/rack/model/UserMissionExample.class
+com/cmb/o2o/cat/rack/service/UserMissionService.class
 com/cmb/o2o/cat/rack/model/Picture.class
+com/cmb/o2o/cat/rack/form/MissionConsoleForm.class
 com/cmb/o2o/cat/rack/model/Reward.class
 com/cmb/o2o/cat/rack/model/StoreBlog.class
 com/cmb/o2o/cat/rack/model/MallStoreRelExample$Criterion.class
 com/cmb/o2o/cat/rack/controller/BlogController.class
 com/cmb/o2o/cat/rack/model/BlogExample$Criteria.class
+com/cmb/o2o/cat/rack/vo/StoreVO.class
 com/cmb/o2o/cat/rack/model/MallStoreRelExample$GeneratedCriteria.class
 com/cmb/o2o/cat/rack/model/DistrictExample$Criteria.class
 com/cmb/o2o/cat/rack/model/BlogPicExample$Criterion.class
@@ -70,6 +77,7 @@ com/cmb/o2o/cat/rack/model/UserMissionExample$Criteria.class
 com/cmb/o2o/cat/rack/common/MissionStatus.class
 com/cmb/o2o/cat/rack/model/BlogPic.class
 com/cmb/o2o/cat/rack/mvc/RequestInterceptor.class
+com/cmb/o2o/cat/rack/service/StoreService.class
 com/cmb/o2o/cat/rack/model/Blog.class
 com/cmb/o2o/cat/rack/dao/TaskMapper.class
 com/cmb/o2o/cat/rack/model/BlogPicExample$Criteria.class

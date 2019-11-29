@@ -4,6 +4,7 @@ import com.cmb.o2o.cat.rack.model.MallStoreRel;
 import com.cmb.o2o.cat.rack.model.MallStoreRelExample;
 import java.util.List;
 
+import com.cmb.o2o.cat.rack.model.Store;
 import com.cmb.o2o.cat.rack.model.StoreBlog;
 import org.apache.ibatis.annotations.Param;
 
@@ -26,6 +27,11 @@ public interface MallStoreRelMapper {
 
     int updateByPrimaryKey(MallStoreRel record);
 
-    List<StoreBlog> queryByMallId(@Param("mallId") Integer mallId);
-    
+    List<Integer> queryStoreIdByMallId(@Param("mallId") Integer mallId);
+
+    StoreBlog queryBlogByStoreId(@Param("storeId") Integer storeId);
+
+    List<String> queryPicsByBlogId(@Param("blogId") Integer blogId);
+
+    Store queryStoreById(@Param("storeId") Integer storeId);
 }

@@ -1,7 +1,5 @@
 package com.cmb.o2o.cat.rack.service;
 
-
-import com.alibaba.fastjson.JSONObject;
 import com.cmb.o2o.cat.rack.dao.DistrictMapper;
 import com.cmb.o2o.cat.rack.dao.MallStoreRelMapper;
 import com.cmb.o2o.cat.rack.form.MissionConsoleForm;

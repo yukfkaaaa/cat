@@ -22,13 +22,13 @@ public class WexinController {
 
     private static final String SUCCESS="0";
 
-    private static final String GET_SESSION_URL="https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code";
+    private static final String GET_SESSION_URL="http://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=JSCODE&grant_type=authorization_code&connect_redirect=1";
 
     @RequestMapping("/wx/login")
     public Response login(String code){
 
         try {
-            String resp=HttpClientUtil.get(String.format(GET_SESSION_URL, appId, appSecret));
+            String resp=HttpClientUtil.get(String.format(GET_SESSION_URL, appId, appSecret).replaceAll("JSCODE",code));
             JSONObject jsonObject= JSON.parseObject(resp);
             String errorCode=jsonObject.getString("errcode");
             if(SUCCESS.equals(errorCode)){

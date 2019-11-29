@@ -1,7 +1,7 @@
 package com.cmb.o2o.cat.rack.form;
 
 /**
- * Created by ASUS on 2019/11/29.
+ * Created by zy on 2019/11/29.
  */
 public class MissionConsoleForm {
     private Integer mallId;

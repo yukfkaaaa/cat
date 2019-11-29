@@ -1,7 +1,5 @@
 package com.cmb.o2o.cat.rack.controller;
 
-import com.cmb.o2o.cat.rack.dao.MallStoreRelMapper;
-import com.cmb.o2o.cat.rack.dao.StoreMapper;
 import com.cmb.o2o.cat.rack.dto.Response;
 import com.cmb.o2o.cat.rack.model.Blog;
 import com.cmb.o2o.cat.rack.model.BlogPic;
@@ -23,7 +21,6 @@ import java.util.*;
  * Created by zhaopingtao on 2019/11/29
  * Description: No Description
  */
-
 @Controller
 @RequestMapping("/store")
 public class StoreController {

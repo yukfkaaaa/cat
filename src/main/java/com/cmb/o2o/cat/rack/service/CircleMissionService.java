@@ -38,8 +38,5 @@ public class CircleMissionService {
         return userMissions;
     }
 
-    public List<Task> getTaskByMissionId(Integer missionId) {
-        List<Task> tasks = taskMapper.getTaskByMissionId(missionId);
-        return tasks;
-    }
+
 }

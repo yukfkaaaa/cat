@@ -23,4 +23,6 @@ public interface TaskMapper {
     int updateByPrimaryKeySelective(Task record);
 
     int updateByPrimaryKey(Task record);
+
+    void deleteByMissionId(@Param("missionId") Integer missionId);
 }

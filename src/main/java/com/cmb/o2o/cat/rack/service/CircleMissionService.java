@@ -75,6 +75,13 @@ public class CircleMissionService {
 
     /*新增或编辑任务*/
     public List<Map<String,Object>> addOrUpdateMission(MissionConsoleForm form){
+        if(form.getMissionId() != null && form.getMissionId()>0){
+            missionMapper.deleteByPrimaryKey(form.getMissionId());
+            taskMapper.deleteByMissionId(form.getMissionId());
+            rewardMapper.deleteByMissionId(form.getMissionId());
+        }
+
+
         Integer districtId = form.getMallId();
         String[] storeIds = form.getStoreIds().split(",");
         String missionTitle = form.getMissionType();

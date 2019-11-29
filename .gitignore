@@ -1,6 +1,7 @@
 *.iml
 
-.idea
+.idea/*
+.idea*
  .idea/workspace.xml
 target/
 src/main/resources/zookeeper.properties

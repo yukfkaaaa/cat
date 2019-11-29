@@ -9,11 +9,14 @@ public class Reward {
 
     private Integer level;
 
-    public Reward(Integer id, String name, String icon, Integer level) {
+    private Integer missionId;
+
+    public Reward(Integer id, String name, String icon, Integer level, Integer missionId) {
         this.id = id;
         this.name = name;
         this.icon = icon;
         this.level = level;
+        this.missionId = missionId;
     }
 
     public Reward() {
@@ -50,5 +53,13 @@ public class Reward {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    public Integer getMissionId() {
+        return missionId;
+    }
+
+    public void setMissionId(Integer missionId) {
+        this.missionId = missionId;
     }
 }

@@ -5,7 +5,7 @@
     <constructor>
       <idArg column="id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="mission_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
-      <arg column="user_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="user_id" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="status" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="finish_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
@@ -103,7 +103,7 @@
     </selectKey>
     insert into user_mission (mission_id, user_id, status, 
       finish_time, create_time)
-    values (#{missionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+    values (#{missionId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
       #{finishTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.cmb.o2o.cat.rack.model.UserMission">
@@ -133,7 +133,7 @@
         #{missionId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        #{userId,jdbcType=INTEGER},
+        #{userId,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -156,7 +156,7 @@
         mission_id = #{record.missionId,jdbcType=INTEGER},
       </if>
       <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
@@ -176,7 +176,7 @@
     update user_mission
     set id = #{record.id,jdbcType=INTEGER},
       mission_id = #{record.missionId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       finish_time = #{record.finishTime,jdbcType=TIMESTAMP},
       create_time = #{record.createTime,jdbcType=TIMESTAMP}
@@ -191,7 +191,7 @@
         mission_id = #{missionId,jdbcType=INTEGER},
       </if>
       <if test="userId != null">
-        user_id = #{userId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -208,7 +208,7 @@
   <update id="updateByPrimaryKey" parameterType="com.cmb.o2o.cat.rack.model.UserMission">
     update user_mission
     set mission_id = #{missionId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       finish_time = #{finishTime,jdbcType=TIMESTAMP},
       create_time = #{createTime,jdbcType=TIMESTAMP}

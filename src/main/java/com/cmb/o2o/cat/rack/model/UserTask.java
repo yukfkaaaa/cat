@@ -7,11 +7,11 @@ public class UserTask {
 
     private Integer taskId;
 
-    private Integer userId;
+    private String userId;
 
     private Date finishTime;
 
-    public UserTask(Integer id, Integer taskId, Integer userId, Date finishTime) {
+    public UserTask(Integer id, Integer taskId, String userId, Date finishTime) {
         this.id = id;
         this.taskId = taskId;
         this.userId = userId;
@@ -38,12 +38,12 @@ public class UserTask {
         this.taskId = taskId;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public Date getFinishTime() {

@@ -9,11 +9,11 @@ public class UserReward {
 
     private Integer rewardId;
 
-    private Integer userId;
+    private String userId;
 
     private Date getTime;
 
-    public UserReward(Integer id, Integer missionId, Integer rewardId, Integer userId, Date getTime) {
+    public UserReward(Integer id, Integer missionId, Integer rewardId, String userId, Date getTime) {
         this.id = id;
         this.missionId = missionId;
         this.rewardId = rewardId;
@@ -49,12 +49,12 @@ public class UserReward {
         this.rewardId = rewardId;
     }
 
-    public Integer getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUserId(String userId) {
+        this.userId = userId == null ? null : userId.trim();
     }
 
     public Date getGetTime() {

@@ -363,6 +363,66 @@ public class RewardExample {
             addCriterion("level not between", value1, value2, "level");
             return (Criteria) this;
         }
+
+        public Criteria andMissionIdIsNull() {
+            addCriterion("mission_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdIsNotNull() {
+            addCriterion("mission_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdEqualTo(Integer value) {
+            addCriterion("mission_id =", value, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdNotEqualTo(Integer value) {
+            addCriterion("mission_id <>", value, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdGreaterThan(Integer value) {
+            addCriterion("mission_id >", value, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("mission_id >=", value, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdLessThan(Integer value) {
+            addCriterion("mission_id <", value, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdLessThanOrEqualTo(Integer value) {
+            addCriterion("mission_id <=", value, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdIn(List<Integer> values) {
+            addCriterion("mission_id in", values, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdNotIn(List<Integer> values) {
+            addCriterion("mission_id not in", values, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdBetween(Integer value1, Integer value2) {
+            addCriterion("mission_id between", value1, value2, "missionId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMissionIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("mission_id not between", value1, value2, "missionId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

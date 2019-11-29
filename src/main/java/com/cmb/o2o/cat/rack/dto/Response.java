@@ -2,10 +2,10 @@ package com.cmb.o2o.cat.rack.dto;
 
 import java.util.Map;
 
-public class Response {
+public class Response<T> {
     private String code;
     private String msg;
-    private Map<String,Object> data;
+    private T data;
 
 
     public String getCode() {
@@ -24,11 +24,11 @@ public class Response {
         this.msg = msg;
     }
 
-    public Map<String, Object> getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Map<String, Object> data) {
+    public void setData(T data) {
         this.data = data;
     }
 
@@ -43,10 +43,16 @@ public class Response {
         return response;
     }
 
-    public static Response succ(Map<String,Object> data){
+    public static <T>  Response succ(T data){
         Response response = new Response();
         response.setCode(SUCC_CODE);
         response.setData(data);
+        return response;
+    }
+
+    public static Response succ(){
+        Response response = new Response();
+        response.setCode(SUCC_CODE);
         return response;
     }
 }

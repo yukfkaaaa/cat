@@ -23,6 +23,4 @@ public interface TaskMapper {
     int updateByPrimaryKeySelective(Task record);
 
     int updateByPrimaryKey(Task record);
-
-    List<Task> getTaskByMissionId(@Param("missionId") Integer missionId);
 }

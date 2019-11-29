@@ -61,7 +61,7 @@ public class CircleTaskController {
 
             List<Task> taskList=getTaskList(missionId);
 
-            missionVo.setTaskVos(taskList.stream().map(t->{
+            missionVo.setTasks(taskList.stream().map(t->{
                 TaskVo taskVo=new TaskVo();
                 taskVo.setStatus(0);
                 taskVo.setId(t.getId());
@@ -77,7 +77,7 @@ public class CircleTaskController {
                 missionVo.setStatus(1);
                 List<UserTask> userTaskList=userTaskMapper.getCompleteTaskByMissionIdByUserId(openid,missionId);
 
-                for(TaskVo taskVo:missionVo.getTaskVos()){
+                for(TaskVo taskVo:missionVo.getTasks()){
                     for(UserTask userTask:userTaskList){
                         if(taskVo.getId().equals(userTask.getId())){
                             taskVo.setStatus(1);

@@ -53,11 +53,6 @@ public class CircleMissionService {
         List<UserMission> userMissions =  userMissionMapper.selectByUserIdAndMissionId(userId, missionId);
         return userMissions;
     }
-
-    public List<Task> getTaskByMissionId(Integer missionId) {
-        List<Task> tasks = taskMapper.getTaskByMissionId(missionId);
-        return tasks;
-    }
     /*查询商圈任务列表*/
     public Map<String,Object> queryMissionsByMall(MissionConsoleForm form){
         Integer districtId = form.getMallId();

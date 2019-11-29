@@ -79,6 +79,7 @@ public class BlogService {
         BlogExample example = new BlogExample();
         BlogExample.Criteria criteria = example.createCriteria();
         criteria.andStoreIdEqualTo(storeId).andStatusNotEqualTo(BlogStatus.ONLINE);
+        example.setOrderByClause("update_time desc");
         return blogMapper.selectByExample(example);
     }
 

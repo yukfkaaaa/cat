@@ -187,7 +187,7 @@
   <select id="getCompleteTaskByMissionIdByUserId" parameterType="map" resultMap="BaseResultMap">
     select * from user_task  u
     where u.user_id=#{userId} and u.task_id in
-    ( select t.id from mission m,task t where t.mission_id=m.id and u.id=#{missionId})
+    ( select t.id from mission m,task t where t.mission_id=m.id and m.id=#{missionId})
   </select>
 
 

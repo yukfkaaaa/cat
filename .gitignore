@@ -1,0 +1,21 @@
+*.iml
+
+.idea
+ .idea/workspace.xml
+target/
+src/main/resources/zookeeper.properties
+src/main/resources/sessionConfig.properties
+src/main/resources/redis.properties
+src/main/resources/pay.properties
+src/main/resources/mysql.properties
+src/main/resources/mq.properties
+src/main/resources/interface.properties
+src/main/resources/httpclient.properties
+src/main/resources/fileConfig.properties
+src/main/resources/encrypt.properties
+src/main/resources/delegator.settlement.center.properties
+api/src/test/java/com/cmb/o2o/product/proxy/Wandatool.java
+
+sonar-project.properties
+.scannerwork
+.scannerwork/*

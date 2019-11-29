@@ -90,13 +90,15 @@
       id as blog_id,
       text as text
     from store_blog
-    where id = (select max(id) from store_blog where store_id = #{storeId})
+    where status = 2
+    and id = (select max(id) from store_blog where store_id = #{storeId})
   </select>
 
   <select id="queryPicsByBlogId" parameterType="Integer" resultType="String">
     select pic
     from blog_pic
     where blog_id = #{blogId}
+    and status = 1
   </select>
 
   <select id="selectPicsByBlogId" parameterType="java.lang.Integer" resultType="String">

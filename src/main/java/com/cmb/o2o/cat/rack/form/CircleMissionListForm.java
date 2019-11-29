@@ -13,7 +13,7 @@ public class CircleMissionListForm {
     /**
      * 用户登录后的微信openid
      */
-    private String openid;
+    private String openId;
 
     public Integer getMallId() {
         return mallId;
@@ -23,11 +23,11 @@ public class CircleMissionListForm {
         this.mallId = mallId;
     }
 
-    public String getOpenid() {
-        return openid;
+    public String getOpenId() {
+        return openId;
     }
 
-    public void setOpenid(String openid) {
-        this.openid = openid;
+    public void setOpenId(String openId) {
+        this.openId = openId;
     }
 }

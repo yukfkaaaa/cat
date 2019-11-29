@@ -22,6 +22,13 @@ public class MissionVo {
      */
     private List<TaskVo> tasks;
 
+
+    private List<StoreVO> stores;
+
+    private List<RewardVO> rewards;
+
+
+
     /**
      * 是否有奖励可以领取
      */
@@ -48,12 +55,31 @@ public class MissionVo {
         this.title = title;
     }
 
+
+
     public List<TaskVo> getTasks() {
         return tasks;
     }
 
     public void setTasks(List<TaskVo> tasks) {
         this.tasks = tasks;
+    }
+
+    public List<StoreVO> getStores() {
+        return stores;
+    }
+
+    public void setStores(List<StoreVO> stores) {
+        this.stores = stores;
+    }
+
+    public List<RewardVO> getRewards() {
+        return rewards;
+    }
+
+    public void setRewards(List<RewardVO> rewards) {
+        this.rewards = rewards;
+
     }
 
     public Integer getHasUnclaimedReward() {

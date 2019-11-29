@@ -1,8 +1,6 @@
 *.iml
 
-.idea/*
-.idea*
- .idea/workspace.xml
+/.idea
 target/
 src/main/resources/zookeeper.properties
 src/main/resources/sessionConfig.properties

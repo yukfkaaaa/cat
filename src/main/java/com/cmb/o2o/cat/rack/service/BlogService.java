@@ -90,6 +90,28 @@ public class BlogService {
     }
 
     public void reportBlog(Integer blogId){
-        blogMapper.reportBlog(blogId);
+        BlogExample example = new BlogExample();
+        BlogExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(blogId);
+        Blog blog = new Blog();
+        blog.setReportNum(blog.getReportNum()+1);
+        blogMapper.updateByExampleSelective(blog,example);
+    }
+
+    public List<Blog> fetchReview(Integer storeId) {
+        List<Integer> status = Arrays.asList(BlogStatus.PREPARE,BlogStatus.ONLINE,BlogStatus.ONLINE);
+        BlogExample example = new BlogExample();
+        BlogExample.Criteria criteria = example.createCriteria();
+        criteria.andStoreIdEqualTo(storeId).andStatusIn(status);
+        return blogMapper.selectByExample(example);
+    }
+
+    public void updateReason(Integer blogId, String reason) {
+        BlogExample example = new BlogExample();
+        BlogExample.Criteria criteria = example.createCriteria();
+        criteria.andIdEqualTo(blogId);
+        Blog blog = new Blog();
+        blog.setMsg(reason);
+        blogMapper.updateByExampleSelective(blog,example);
     }
 }

@@ -17,7 +17,9 @@ public class Store {
 
     private String type;
 
-    public Store(Integer id, String name, String address, String longitude, String latitude, String openTime, Integer districtId, String type) {
+    private String pic;
+
+    public Store(Integer id, String name, String address, String longitude, String latitude, String openTime, Integer districtId, String type, String pic) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -26,6 +28,7 @@ public class Store {
         this.openTime = openTime;
         this.districtId = districtId;
         this.type = type;
+        this.pic = pic;
     }
 
     public Store() {
@@ -94,5 +97,13 @@ public class Store {
 
     public void setType(String type) {
         this.type = type == null ? null : type.trim();
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic == null ? null : pic.trim();
     }
 }

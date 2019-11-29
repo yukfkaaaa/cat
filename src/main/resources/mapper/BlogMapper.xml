@@ -10,6 +10,8 @@
       <arg column="create_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="update_time" javaType="java.util.Date" jdbcType="TIMESTAMP" />
       <arg column="sp_status" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="report_num" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="msg" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -71,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, store_id, text, status, create_time, update_time, sp_status
+    id, store_id, text, status, create_time, update_time, sp_status, report_num, msg
   </sql>
   <select id="selectByExample" parameterType="com.cmb.o2o.cat.rack.model.BlogExample" resultMap="BaseResultMap">
     select
@@ -103,11 +105,11 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into store_blog (store_id, text, status, 
-      create_time, update_time, sp_status
-      )
+      create_time, update_time, sp_status, 
+      report_num, msg)
     values (#{storeId,jdbcType=INTEGER}, #{text,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{spStatus,jdbcType=INTEGER}
-      )
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{spStatus,jdbcType=INTEGER}, 
+      #{reportNum,jdbcType=INTEGER}, #{msg,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cmb.o2o.cat.rack.model.Blog">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -133,6 +135,12 @@
       <if test="spStatus != null">
         sp_status,
       </if>
+      <if test="reportNum != null">
+        report_num,
+      </if>
+      <if test="msg != null">
+        msg,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="storeId != null">
@@ -153,8 +161,20 @@
       <if test="spStatus != null">
         #{spStatus,jdbcType=INTEGER},
       </if>
+      <if test="reportNum != null">
+        #{reportNum,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null">
+        #{msg,jdbcType=VARCHAR},
+      </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.cmb.o2o.cat.rack.model.BlogExample" resultType="java.lang.Long">
+    select count(*) from store_blog
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update store_blog
     <set>
@@ -179,6 +199,12 @@
       <if test="record.spStatus != null">
         sp_status = #{record.spStatus,jdbcType=INTEGER},
       </if>
+      <if test="record.reportNum != null">
+        report_num = #{record.reportNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.msg != null">
+        msg = #{record.msg,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -192,7 +218,9 @@
       status = #{record.status,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
-      sp_status = #{record.spStatus,jdbcType=INTEGER}
+      sp_status = #{record.spStatus,jdbcType=INTEGER},
+      report_num = #{record.reportNum,jdbcType=INTEGER},
+      msg = #{record.msg,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -218,6 +246,12 @@
       <if test="spStatus != null">
         sp_status = #{spStatus,jdbcType=INTEGER},
       </if>
+      <if test="reportNum != null">
+        report_num = #{reportNum,jdbcType=INTEGER},
+      </if>
+      <if test="msg != null">
+        msg = #{msg,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -228,13 +262,9 @@
       status = #{status,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
-      sp_status = #{spStatus,jdbcType=INTEGER}
+      sp_status = #{spStatus,jdbcType=INTEGER},
+      report_num = #{reportNum,jdbcType=INTEGER},
+      msg = #{msg,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
-  </update>
-
-  <update id="reportBlog" parameterType="java.lang.Integer">
-    update store_blog
-    set report_num = report_num+1
-    where id = #{blogId}
   </update>
 </mapper>

@@ -2,11 +2,9 @@ package com.cmb.o2o.cat.rack.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cmb.o2o.cat.rack.dto.Response;
-import com.cmb.o2o.cat.rack.model.StoreBlog;
 import com.cmb.o2o.cat.rack.service.MallService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;

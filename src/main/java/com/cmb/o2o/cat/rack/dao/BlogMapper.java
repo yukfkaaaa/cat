@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface BlogMapper {
+    long countByExample(BlogExample example);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(Blog record);
@@ -23,6 +25,4 @@ public interface BlogMapper {
     int updateByPrimaryKeySelective(Blog record);
 
     int updateByPrimaryKey(Blog record);
-
-    void reportBlog(@Param("blogId") Integer blogId);
 }

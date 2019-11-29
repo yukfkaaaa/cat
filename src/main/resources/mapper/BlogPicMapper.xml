@@ -139,6 +139,12 @@
       </if>
     </trim>
   </insert>
+  <select id="countByExample" parameterType="com.cmb.o2o.cat.rack.model.BlogPicExample" resultType="java.lang.Long">
+    select count(*) from blog_pic
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
   <update id="updateByExampleSelective" parameterType="map">
     update blog_pic
     <set>

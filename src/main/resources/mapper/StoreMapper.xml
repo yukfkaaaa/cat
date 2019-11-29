@@ -11,6 +11,7 @@
       <arg column="open_time" javaType="java.lang.String" jdbcType="VARCHAR" />
       <arg column="district_id" javaType="java.lang.Integer" jdbcType="INTEGER" />
       <arg column="type" javaType="java.lang.String" jdbcType="VARCHAR" />
+      <arg column="pic" javaType="java.lang.String" jdbcType="VARCHAR" />
     </constructor>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -72,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, address, longitude, latitude, open_time, district_id, type
+    id, name, address, longitude, latitude, open_time, district_id, type, pic
   </sql>
   <select id="selectByExample" parameterType="com.cmb.o2o.cat.rack.model.StoreExample" resultMap="BaseResultMap">
     select
@@ -105,10 +106,10 @@
     </selectKey>
     insert into store (name, address, longitude, 
       latitude, open_time, district_id, 
-      type)
+      type, pic)
     values (#{name,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{longitude,jdbcType=VARCHAR}, 
       #{latitude,jdbcType=VARCHAR}, #{openTime,jdbcType=VARCHAR}, #{districtId,jdbcType=INTEGER}, 
-      #{type,jdbcType=VARCHAR})
+      #{type,jdbcType=VARCHAR}, #{pic,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.cmb.o2o.cat.rack.model.Store">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
@@ -137,6 +138,9 @@
       <if test="type != null">
         type,
       </if>
+      <if test="pic != null">
+        pic,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="name != null">
@@ -159,6 +163,9 @@
       </if>
       <if test="type != null">
         #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="pic != null">
+        #{pic,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -189,6 +196,9 @@
       <if test="record.type != null">
         type = #{record.type,jdbcType=VARCHAR},
       </if>
+      <if test="record.pic != null">
+        pic = #{record.pic,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -203,7 +213,8 @@
       latitude = #{record.latitude,jdbcType=VARCHAR},
       open_time = #{record.openTime,jdbcType=VARCHAR},
       district_id = #{record.districtId,jdbcType=INTEGER},
-      type = #{record.type,jdbcType=VARCHAR}
+      type = #{record.type,jdbcType=VARCHAR},
+      pic = #{record.pic,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -232,6 +243,9 @@
       <if test="type != null">
         type = #{type,jdbcType=VARCHAR},
       </if>
+      <if test="pic != null">
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -243,7 +257,8 @@
       latitude = #{latitude,jdbcType=VARCHAR},
       open_time = #{openTime,jdbcType=VARCHAR},
       district_id = #{districtId,jdbcType=INTEGER},
-      type = #{type,jdbcType=VARCHAR}
+      type = #{type,jdbcType=VARCHAR},
+      pic = #{pic,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

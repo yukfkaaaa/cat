@@ -17,7 +17,11 @@ public class Blog {
 
     private Integer spStatus;
 
-    public Blog(Integer id, Integer storeId, String text, Integer status, Date createTime, Date updateTime, Integer spStatus) {
+    private Integer reportNum;
+
+    private String msg;
+
+    public Blog(Integer id, Integer storeId, String text, Integer status, Date createTime, Date updateTime, Integer spStatus, Integer reportNum, String msg) {
         this.id = id;
         this.storeId = storeId;
         this.text = text;
@@ -25,6 +29,8 @@ public class Blog {
         this.createTime = createTime;
         this.updateTime = updateTime;
         this.spStatus = spStatus;
+        this.reportNum = reportNum;
+        this.msg = msg;
     }
 
     public Blog() {
@@ -85,5 +91,21 @@ public class Blog {
 
     public void setSpStatus(Integer spStatus) {
         this.spStatus = spStatus;
+    }
+
+    public Integer getReportNum() {
+        return reportNum;
+    }
+
+    public void setReportNum(Integer reportNum) {
+        this.reportNum = reportNum;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg == null ? null : msg.trim();
     }
 }

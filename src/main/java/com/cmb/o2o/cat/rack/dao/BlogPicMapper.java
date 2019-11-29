@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface BlogPicMapper {
+    long countByExample(BlogPicExample example);
+
     int deleteByPrimaryKey(Integer id);
 
     int insert(BlogPic record);

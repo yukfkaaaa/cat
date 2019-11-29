@@ -1,5 +1,6 @@
 package com.cmb.o2o.cat.rack.controller;
 
+import com.cmb.o2o.cat.rack.dto.BlogWrapper;
 import com.cmb.o2o.cat.rack.dto.Response;
 import com.cmb.o2o.cat.rack.model.Blog;
 import com.cmb.o2o.cat.rack.model.BlogPic;
@@ -47,8 +48,9 @@ public class BlogController {
 
     @RequestMapping("/ops/refuse")
     @ResponseBody
-    public Response refuseBlog(Integer blogId){
+    public Response refuseBlog(Integer blogId,String reason){
         blogService.updateBlogStatus(blogId,1);
+        blogService.updateReason(blogId,reason);
         Map<String,Object> retMap = new HashMap<>();
         retMap.put("succ",true);
         return Response.succ(retMap);
@@ -83,11 +85,24 @@ public class BlogController {
 
     @RequestMapping("/ops/list")
     @ResponseBody
-    public Response blogListInOps(Integer storeId){
-        List<Blog> blogList = blogService.fetchAll(storeId);
+    public Response blogListInOps(Integer storeId,Integer isReview){
+        List<Blog> blogList = null;
+        if(isReview == 1){
+            blogList = blogService.fetchReview(storeId);
+        }else{
+            blogList = blogService.fetchAll(storeId);
+        }
+        List<BlogWrapper> wrapperList = new ArrayList<>(blogList.size());
+        for(Blog blog : blogList){
+            List<BlogPic> picList = blogService.fetchPics(blog.getId());
+            BlogWrapper wrapper = new BlogWrapper(blog,picList);
+            wrapperList.add(wrapper);
+        }
+
+
         Map<String,Object> retMap = new HashMap<>();
-        retMap.put("rows",blogList);
-        retMap.put("size",blogList.size());
+        retMap.put("rows",wrapperList);
+        retMap.put("size",wrapperList.size());
         return Response.succ(retMap);
     }
 

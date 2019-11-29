@@ -534,6 +534,136 @@ public class BlogExample {
             addCriterion("sp_status not between", value1, value2, "spStatus");
             return (Criteria) this;
         }
+
+        public Criteria andReportNumIsNull() {
+            addCriterion("report_num is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumIsNotNull() {
+            addCriterion("report_num is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumEqualTo(Integer value) {
+            addCriterion("report_num =", value, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumNotEqualTo(Integer value) {
+            addCriterion("report_num <>", value, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumGreaterThan(Integer value) {
+            addCriterion("report_num >", value, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumGreaterThanOrEqualTo(Integer value) {
+            addCriterion("report_num >=", value, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumLessThan(Integer value) {
+            addCriterion("report_num <", value, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumLessThanOrEqualTo(Integer value) {
+            addCriterion("report_num <=", value, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumIn(List<Integer> values) {
+            addCriterion("report_num in", values, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumNotIn(List<Integer> values) {
+            addCriterion("report_num not in", values, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumBetween(Integer value1, Integer value2) {
+            addCriterion("report_num between", value1, value2, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andReportNumNotBetween(Integer value1, Integer value2) {
+            addCriterion("report_num not between", value1, value2, "reportNum");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgIsNull() {
+            addCriterion("msg is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgIsNotNull() {
+            addCriterion("msg is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgEqualTo(String value) {
+            addCriterion("msg =", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgNotEqualTo(String value) {
+            addCriterion("msg <>", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgGreaterThan(String value) {
+            addCriterion("msg >", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgGreaterThanOrEqualTo(String value) {
+            addCriterion("msg >=", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgLessThan(String value) {
+            addCriterion("msg <", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgLessThanOrEqualTo(String value) {
+            addCriterion("msg <=", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgLike(String value) {
+            addCriterion("msg like", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgNotLike(String value) {
+            addCriterion("msg not like", value, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgIn(List<String> values) {
+            addCriterion("msg in", values, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgNotIn(List<String> values) {
+            addCriterion("msg not in", values, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgBetween(String value1, String value2) {
+            addCriterion("msg between", value1, value2, "msg");
+            return (Criteria) this;
+        }
+
+        public Criteria andMsgNotBetween(String value1, String value2) {
+            addCriterion("msg not between", value1, value2, "msg");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

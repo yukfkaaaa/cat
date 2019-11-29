@@ -15,9 +15,8 @@
     <result column="store_id" property="storeId" jdbcType="INTEGER"/>
     <result column="blog_id" property="blogId" jdbcType="INTEGER"/>
     <result column="text" property="content" jdbcType="VARCHAR"/>
-    <result column="pic" property="pics" jdbcType="VARCHAR"/>
-    <collection property="pics" ofType="java.lang.String" javaType="java.util.List">
-      <result column="pic" property="pic" jdbcType="VARCHAR"/>
+    <collection property="pics" ofType="com.cmb.o2o.cat.rack.model.Picture" javaType="java.util.List">
+      <result column="pic" property="picture" jdbcType="VARCHAR"/>
     </collection>
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -91,6 +90,10 @@
     where a.mall_id = #{mallId}
     and a.store_id = b.store_id
     and b.status = 1
+    and b.id = c.blog_id
+    group by a.store_id
+    order by c.create_time
+    limie 1
   </select>
   <select id="selectByExample" parameterType="com.cmb.o2o.cat.rack.model.MallStoreRelExample" resultMap="BaseResultMap">
     select

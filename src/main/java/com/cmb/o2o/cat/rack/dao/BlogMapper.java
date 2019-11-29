@@ -23,4 +23,6 @@ public interface BlogMapper {
     int updateByPrimaryKeySelective(Blog record);
 
     int updateByPrimaryKey(Blog record);
+
+    void reportBlog(@Param("blogId") Integer blogId);
 }

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class MallController {
 
     @RequestMapping(value="mall")
-    public Response mallNews(){
+    public Response mallDynamics(){
 
     }
 

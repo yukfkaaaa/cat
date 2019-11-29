@@ -363,6 +363,11 @@ public class RewardExample {
             addCriterion("level not between", value1, value2, "level");
             return (Criteria) this;
         }
+
+        public Criteria andMissionIdEqualTo(Integer missionId){
+            addCriterion("mission_id =", missionId, "missionId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

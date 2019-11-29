@@ -69,8 +69,10 @@ public class UserMissionService {
             userReward.setGetTime(new Date());
             userRewardMapper.insert(userReward);
             int num=getUserNotGetMissionReward(openId,String.valueOf(missionId));
-            if(num>0){
+            if(num>1){
                 cacheUserNotGetMissionReward(openId,String.valueOf(missionId),num-1);
+            }else {
+                StaticMap.delete(openId+"_"+missionId);
             }
 
             return true;

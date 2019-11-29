@@ -16,4 +16,8 @@ public final class StaticMap {
     public static Object get(String key){
         return M_MAP.get(key);
     }
+
+    public static void delete(String key){
+        M_MAP.remove(key);
+    }
 }

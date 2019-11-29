@@ -88,4 +88,8 @@ public class BlogService {
     public List<Blog> fetchAllAvailable(Integer storeId) {
         return null;
     }
+
+    public void reportBlog(Integer blogId){
+        blogMapper.reportBlog(blogId);
+    }
 }

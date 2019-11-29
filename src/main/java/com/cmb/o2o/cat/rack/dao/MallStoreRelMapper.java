@@ -26,7 +26,6 @@ public interface MallStoreRelMapper {
 
     int updateByPrimaryKey(MallStoreRel record);
 
-    List<StoreBlog> queryByMallId(Integer mallId);
-
+    List<StoreBlog> queryByMallId(@Param("mallId") Integer mallId);
     
 }

@@ -117,4 +117,11 @@ public class BlogController {
         retMap.put("size",blogList.size());
         return Response.succ(retMap);
     }
+
+    @RequestMapping("/app/report")
+    @ResponseBody
+    public Response reportBlog(Integer blogId){
+        blogService.reportBlog(blogId);
+        return Response.succ();
+    }
 }

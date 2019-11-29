@@ -5,6 +5,7 @@ import com.cmb.o2o.cat.rack.common.StaticMap;
 import com.cmb.o2o.cat.rack.dao.*;
 import com.cmb.o2o.cat.rack.dto.Response;
 import com.cmb.o2o.cat.rack.model.*;
+import com.cmb.o2o.cat.rack.service.UserMissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.util.CollectionUtils;
@@ -42,19 +43,15 @@ public class UserMissionController {
     @Autowired
     private TaskMapper taskMapper;
 
+    @Autowired
+    private UserMissionService userMissionService;
+
     @RequestMapping("/mission/apply")
     public Response applyMission(Integer id, String openId) {
 
 
-        UserMission userMission = new UserMission();
-
-        userMission.setCreateTime(new Date());
-        userMission.setMissionId(id);
-        userMission.setStatus(MissionStatus.INIT);
-        userMission.setUserId(openId);
-
         try {
-            userMissionMapper.insert(userMission);
+            userMissionService.joinMission(id,openId);
             return Response.succ();
         } catch (DuplicateKeyException e) {
             return Response.fail("您已领取该任务");
@@ -62,7 +59,7 @@ public class UserMissionController {
     }
 
 
-    @RequestMapping("/mission/apply")
+    @RequestMapping("/reward/apply")
     public Response applyReward(Integer missionId, String openId, Integer rewardId) {
 
 

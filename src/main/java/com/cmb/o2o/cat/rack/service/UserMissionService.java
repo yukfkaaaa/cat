@@ -1,7 +1,9 @@
 package com.cmb.o2o.cat.rack.service;
 
+import com.cmb.o2o.cat.rack.common.MissionStatus;
 import com.cmb.o2o.cat.rack.common.StaticMap;
 import com.cmb.o2o.cat.rack.dao.*;
+import com.cmb.o2o.cat.rack.dto.Response;
 import com.cmb.o2o.cat.rack.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,6 +39,47 @@ public class UserMissionService {
     @Autowired
     private TaskMapper taskMapper;
 
+
+    public void joinMission(Integer missionId,String  openId){
+        UserMission userMission = new UserMission();
+
+        userMission.setCreateTime(new Date());
+        userMission.setMissionId(missionId);
+        userMission.setStatus(MissionStatus.INIT);
+        userMission.setUserId(openId);
+
+        userMissionMapper.insert(userMission);
+    }
+
+    public boolean getReward(Integer missionId, String openId, Integer rewardId){
+
+        UserRewardExample example = new UserRewardExample();
+        UserRewardExample.Criteria criteria = example.createCriteria();
+        criteria.andUserIdEqualTo(openId);
+        criteria.andRewardIdEqualTo(rewardId);
+        criteria.andMissionIdEqualTo(missionId);
+
+        List<UserReward> list = userRewardMapper.selectByExample(example);
+
+        if (CollectionUtils.isEmpty(list)) {
+            UserReward userReward = new UserReward();
+            userReward.setMissionId(missionId);
+            userReward.setUserId(openId);
+            userReward.setRewardId(rewardId);
+            userReward.setGetTime(new Date());
+            userRewardMapper.insert(userReward);
+            int num=getUserNotGetMissionReward(openId,String.valueOf(missionId));
+            if(num>0){
+                cacheUserNotGetMissionReward(openId,String.valueOf(missionId),num-1);
+            }
+
+            return true;
+        }
+
+        return false;
+
+
+    }
 
     @Transactional(rollbackFor = Throwable.class)
     public int finishMissionTask(String openId,Integer taskId,Integer missionId){
@@ -86,8 +129,17 @@ public class UserMissionService {
     }
 
 
-    private void cacheUserNotGetMissionReward(String openId,String missionId,int rewardNum){
+    private   void cacheUserNotGetMissionReward(String openId,String missionId,int rewardNum){
         StaticMap.put(openId+"_"+missionId,rewardNum);
+    }
+
+    private int getUserNotGetMissionReward(String openId,String missionId){
+        Integer num=(Integer) StaticMap.get(openId+"_"+missionId);
+        if(num==null){
+            return 0;
+        }
+        return num;
+
     }
 
 }

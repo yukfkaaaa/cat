@@ -14,6 +14,7 @@ public class MallService {
 
     public List<StoreBlog> queryMallDynamics(Integer mallId){
         return mallStoreRelMapper.queryByMallId(mallId);
+
     }
 
 }

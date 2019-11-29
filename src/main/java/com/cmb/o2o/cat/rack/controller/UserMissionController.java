@@ -1,10 +1,7 @@
 package com.cmb.o2o.cat.rack.controller;
 
 import com.cmb.o2o.cat.rack.common.MissionStatus;
-import com.cmb.o2o.cat.rack.dao.MissionMapper;
-import com.cmb.o2o.cat.rack.dao.RewardMapper;
-import com.cmb.o2o.cat.rack.dao.UserMissionMapper;
-import com.cmb.o2o.cat.rack.dao.UserRewardMapper;
+import com.cmb.o2o.cat.rack.dao.*;
 import com.cmb.o2o.cat.rack.dto.Response;
 import com.cmb.o2o.cat.rack.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,6 +32,9 @@ public class UserMissionController  {
 
     @Autowired
     private UserRewardMapper userRewardMapper;
+
+    @Autowired
+    private UserTaskMapper userTaskMapper;
 
     @RequestMapping("/mission/apply")
     public Response applyMission(Integer id,String openId){
@@ -80,6 +80,20 @@ public class UserMissionController  {
         }else {
             return Response.fail("您已领取该奖励");
         }
+
+    }
+
+    @RequestMapping("/mission/finishTask")
+    public Response finishMissionTask(Integer openId,Integer taskId,Integer missionId){
+        UserTask userTask=new UserTask();
+
+        userTask.setUserId(openId);
+        userTask.setTaskId(taskId);
+        userTask.setFinishTime(new Date());
+
+        userTaskMapper.insert(userTask);
+
+        return Response.succ();
 
     }
 }

@@ -29,9 +29,6 @@ public class StoreController {
     private BlogService blogService;
 
     @Autowired
-    private MallService mallService;
-
-    @Autowired
     private StoreService storeService;
 
 

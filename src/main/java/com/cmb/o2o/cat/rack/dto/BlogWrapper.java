@@ -14,6 +14,8 @@ public class BlogWrapper {
     private String time;
     private List<String> pics;
     private String reason;
+    private Integer reportNum;
+    private Integer likeNum;
 
     public BlogWrapper(Blog blog, List<BlogPic> pics){
         this.id = String.valueOf(blog.getId());
@@ -26,6 +28,8 @@ public class BlogWrapper {
             this.pics.add(blogPic.getPic());
         }
         this.reason = blog.getMsg();
+        this.reportNum = blog.getReportNum();
+        this.likeNum = blog.getLikeNum();
     }
 
     public String getId() {
@@ -74,5 +78,21 @@ public class BlogWrapper {
 
     public void setReason(String reason) {
         this.reason = reason;
+    }
+
+    public Integer getReportNum() {
+        return reportNum;
+    }
+
+    public void setReportNum(Integer reportNum) {
+        this.reportNum = reportNum;
+    }
+
+    public Integer getLikeNum() {
+        return likeNum;
+    }
+
+    public void setLikeNum(Integer likeNum) {
+        this.likeNum = likeNum;
     }
 }

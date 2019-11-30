@@ -29,13 +29,7 @@ public class CircleMissionService {
     private TaskMapper taskMapper;
 
     @Autowired
-    private UserTaskMapper userTaskMapper;
-
-    @Autowired
     private DistrictMapper districtMapper;
-
-    @Autowired
-    private UserRewardMapper userRewardMapper;
 
     @Autowired
     private RewardMapper rewardMapper;
@@ -66,7 +60,7 @@ public class CircleMissionService {
         }
         JSONObject res = new JSONObject();
         res.put("mall",district);
-        res.put("missions",JSONObject.toJSONString(missions));
+        res.put("missions",missions);
         return res;
     }
 
@@ -119,6 +113,5 @@ public class CircleMissionService {
 
     public int  delMission(MissionConsoleForm form) {
         return missionMapper.deleteByPrimaryKey(form.getMissionId());
-
     }
 }

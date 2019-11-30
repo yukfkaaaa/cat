@@ -2,6 +2,7 @@ package com.cmb.o2o.cat.rack.service;
 
 import com.cmb.o2o.cat.rack.dao.DistrictMapper;
 import com.cmb.o2o.cat.rack.dao.MallStoreRelMapper;
+import com.cmb.o2o.cat.rack.dao.StoreMapper;
 import com.cmb.o2o.cat.rack.form.MissionConsoleForm;
 import com.cmb.o2o.cat.rack.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,9 @@ import java.util.List;
 public class MallService {
     @Autowired
     private MallStoreRelMapper mallStoreRelMapper;
+
+    @Autowired
+    private StoreMapper storeMapper;
 
     @Autowired
     DistrictMapper districtMapper;
@@ -41,4 +45,10 @@ public class MallService {
     }
 
 
+    public List<Store> queryStores(MissionConsoleForm form) {
+        StoreExample storeExp = new StoreExample();
+        StoreExample.Criteria cri = storeExp.createCriteria();
+        cri.andDistrictIdEqualTo(form.getMallId());
+        return storeMapper.selectByExample(storeExp);
+    }
 }

@@ -29,8 +29,6 @@ public class StoreController {
     @Autowired
     private StoreService storeService;
 
-
-
     @RequestMapping("/detail")
     @ResponseBody
     public Response storeBlogs(Integer storeId){
@@ -48,7 +46,6 @@ public class StoreController {
         retMap.put("address",store.getAddress());
         retMap.put("type", store.getType());
         retMap.put("pic", store.getPic());
-
 
         List<Blog> blogList = blogService.fetchOnline(storeId);
         if (blogList == null ) {
@@ -79,7 +76,6 @@ public class StoreController {
             retMap.put("activityList","");
             return Response.succ(retMap);
         }
-
     }
 
 }

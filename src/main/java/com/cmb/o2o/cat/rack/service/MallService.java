@@ -1,6 +1,5 @@
 package com.cmb.o2o.cat.rack.service;
 
-
 import com.cmb.o2o.cat.rack.dao.DistrictMapper;
 import com.cmb.o2o.cat.rack.dao.MallStoreRelMapper;
 import com.cmb.o2o.cat.rack.dao.StoreMapper;
@@ -8,6 +7,7 @@ import com.cmb.o2o.cat.rack.form.MissionConsoleForm;
 import com.cmb.o2o.cat.rack.model.District;
 import com.cmb.o2o.cat.rack.model.Store;
 import com.cmb.o2o.cat.rack.model.StoreBlog;
+import com.cmb.o2o.cat.rack.model.StoreExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

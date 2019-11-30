@@ -14,7 +14,9 @@ public class Mission {
 
     private Date expireTime;
 
-    private List<Reward> rewardList;
+    private List<String> rewardList;
+
+    private List<Task> tasks;
 
     public Mission(Integer id, String title, Date createTime, Integer districtId, Date expireTime) {
         this.id = id;
@@ -68,11 +70,19 @@ public class Mission {
         this.expireTime = expireTime;
     }
 
-    public List<Reward> getRewardList() {
+    public List<String> getRewardList() {
         return rewardList;
     }
 
-    public void setRewardList(List<Reward> rewardList) {
+    public void setRewardList(List<String> rewardList) {
         this.rewardList = rewardList;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

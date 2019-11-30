@@ -9,6 +9,7 @@ import com.cmb.o2o.cat.rack.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -59,9 +60,13 @@ public class CircleMissionService {
             cri.andMissionIdEqualTo(mission.getId());
             tas.andMissionIdEqualTo(mission.getId());
             List<Reward> rewards = rewardMapper.selectByExample(rewardExample);
+            List<String> temp = new ArrayList<>();
+            for (Reward reward : rewards){
+                temp.add(reward.getName());
+            }
             List<Task> tasks = taskMapper.selectByExample(taskExample);
             mission.setTasks(tasks);
-            mission.setRewardList(rewards);
+            mission.setRewardList(temp);
         }
         JSONObject res = new JSONObject();
         res.put("mall",district);

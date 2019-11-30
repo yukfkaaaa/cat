@@ -80,7 +80,7 @@ public class CircleMissionService {
         int missionId = 0;
         if(form.getMissionId() != null && form.getMissionId()>0){
             missionId = form.getMissionId();
-            missionMapper.deleteByPrimaryKey(missionId);
+//            missionMapper.deleteByPrimaryKey(missionId);
             taskMapper.deleteByMissionId(missionId);
             rewardMapper.deleteByMissionId(missionId);
         }
@@ -94,7 +94,8 @@ public class CircleMissionService {
             mission.setExpireTime(new Date());
             mission.setDistrictId(districtId);
             mission.setTitle(missionTitle);
-            missionId = missionMapper.insert(mission);
+            missionMapper.insertSelective(mission);
+            missionId = mission.getId();
         }
 
         for(String storeId : storeIds){
@@ -108,13 +109,13 @@ public class CircleMissionService {
 
         String rewardsDesc = form.getRewardsDesc();
         if(!org.springframework.util.StringUtils.isEmpty(rewardsDesc)){
-            JSONArray rewardsArr = JSON.parseArray(rewardsDesc);
-            for (int i=0; i<rewardsArr.size();i++){
-                JSONObject rewardObj = rewardsArr.getJSONObject(i);
+            String[] rewards = rewardsDesc.split(",");
+            for (int i=0; i<rewards.length;i++){
                 Reward reward = new Reward();
-                reward.setName(rewardObj.getString("rewardName"));
+                reward.setName(rewards[i]);
                 reward.setMissionId(missionId);
-                reward.setLevel(rewardObj.getInteger("level"));
+                reward.setLevel(i+1);
+
                 rewardMapper.insert(reward);
             }
         }

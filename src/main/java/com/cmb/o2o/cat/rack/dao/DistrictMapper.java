@@ -27,4 +27,7 @@ public interface DistrictMapper {
     int updateByPrimaryKey(District record);
 
     List<District> selectAll();
+
+    List<District> selectByParams(@Param("cityName") String cityName, @Param("districtName") String districtName);
+
 }

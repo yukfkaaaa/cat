@@ -240,4 +240,14 @@
   <select id="selectAll" resultMap="BaseResultMap">
     select * from district
   </select>
+  <select id="selectByParams" resultMap="BaseResultMap">
+    select * from district
+    where 1=1
+    <if test="districtName !=null and districtName != ''">
+      and district_name like concat('%',#{districtName},'%')
+    </if>
+    <if test="cityName!=null and cityName != ''" >
+      and city_name = #{cityName}
+    </if>
+  </select>
 </mapper>

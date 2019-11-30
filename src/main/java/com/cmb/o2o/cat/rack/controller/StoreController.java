@@ -6,13 +6,11 @@ import com.cmb.o2o.cat.rack.model.BlogPic;
 import com.cmb.o2o.cat.rack.model.Store;
 import com.cmb.o2o.cat.rack.model.StoreBlogDetail;
 import com.cmb.o2o.cat.rack.service.BlogService;
-import com.cmb.o2o.cat.rack.service.MallService;
 import com.cmb.o2o.cat.rack.service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -27,9 +25,6 @@ public class StoreController {
 
     @Autowired
     private BlogService blogService;
-
-    @Autowired
-    private MallService mallService;
 
     @Autowired
     private StoreService storeService;

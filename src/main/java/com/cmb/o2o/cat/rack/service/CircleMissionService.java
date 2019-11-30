@@ -110,7 +110,6 @@ public class CircleMissionService {
                 Reward reward = new Reward();
                 reward.setName(rewardObj.getString("rewardName"));
                 reward.setMissionId(missionId);
-                reward.setIcon("");
                 reward.setLevel(rewardObj.getInteger("level"));
                 rewardMapper.insert(reward);
             }

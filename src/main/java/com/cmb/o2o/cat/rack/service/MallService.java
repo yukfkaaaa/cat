@@ -35,15 +35,9 @@ public class MallService {
         return retList;
     }
 
-
-
     /*商圈列表*/
     public List<District> queryMalls(MissionConsoleForm form){
-        DistrictExample districtExample=new DistrictExample();
-        DistrictExample.Criteria criteria=districtExample.createCriteria();
-        criteria.andDistrictNameLike("%"+form.getMallName()+"%").andCityNameEqualTo(form.getCityName());
-
-        return districtMapper.selectByExample(districtExample);
+        return districtMapper.selectByParams(form.getCityName(),form.getMallName());
     }
 
 

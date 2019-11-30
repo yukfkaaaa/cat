@@ -53,9 +53,14 @@ public class CircleMissionService {
         List<Mission> missions = missionMapper.selectByDistrictId(districtId);
         RewardExample rewardExample = new RewardExample();
         RewardExample.Criteria cri =  rewardExample.createCriteria();
+        TaskExample taskExample = new TaskExample();
+        TaskExample.Criteria tas = taskExample.createCriteria();
         for (Mission mission : missions){
             cri.andMissionIdEqualTo(mission.getId());
+            tas.andMissionIdEqualTo(mission.getId());
             List<Reward> rewards = rewardMapper.selectByExample(rewardExample);
+            List<Task> tasks = taskMapper.selectByExample(taskExample);
+            mission.setTasks(tasks);
             mission.setRewardList(rewards);
         }
         JSONObject res = new JSONObject();

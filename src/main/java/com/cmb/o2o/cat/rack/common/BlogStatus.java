@@ -1,5 +1,9 @@
 package com.cmb.o2o.cat.rack.common;
 
+/**
+ * @author dragic
+ * @create 2019/11/29 15:04
+ */
 public class BlogStatus {
 
     public static final int PREPARE = 0;

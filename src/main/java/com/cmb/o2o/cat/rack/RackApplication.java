@@ -13,6 +13,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @MapperScan(basePackages = {"com.cmb.o2o.cat.rack.dao"})
 @EnableTransactionManagement
 @EnableWebMvc
+/**
+ * @author dragic
+ * @create 2019/11/29 15:04
+ */
 public class RackApplication  extends WebMvcConfigurationSupport {
 
 	public static void main (String[] args) {

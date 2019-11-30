@@ -42,9 +42,6 @@ public class CircleTaskController {
     private StoreMapper storeMapper;
 
     @Autowired
-    private UserMissionService userMissionService;
-
-    @Autowired
     private UserRewardMapper userRewardMapper;
 
     @Autowired

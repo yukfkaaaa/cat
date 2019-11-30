@@ -1,7 +1,5 @@
 package com.cmb.o2o.cat.rack.dto;
 
-import java.util.Map;
-
 public class Response<T> {
     private String code;
     private String msg;

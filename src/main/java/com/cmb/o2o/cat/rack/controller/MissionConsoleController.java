@@ -40,4 +40,9 @@ public class MissionConsoleController {
         return Response.succ(circleMissionService.delMission(form));
     }
 
+
+    @RequestMapping(value="console/queryStores")
+    public Response queryStores(MissionConsoleForm form){
+        return Response.succ(mallService.queryStores(form));
+    }
 }

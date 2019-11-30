@@ -15,7 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @EnableWebMvc
 public class RackApplication  extends WebMvcConfigurationSupport {
 
-	public static void main(String[] args) {
+	public static void main (String[] args) {
 		SpringApplication.run(RackApplication.class, args);
 	}
 

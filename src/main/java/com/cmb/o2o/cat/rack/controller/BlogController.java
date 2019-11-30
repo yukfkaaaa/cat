@@ -1,5 +1,6 @@
 package com.cmb.o2o.cat.rack.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cmb.o2o.cat.rack.dto.BlogWrapper;
 import com.cmb.o2o.cat.rack.dto.Response;
 import com.cmb.o2o.cat.rack.model.Blog;
@@ -91,11 +92,13 @@ public class BlogController {
     @ResponseBody
     public Response blogListInOps(Integer storeId,Integer isReview){
         List<Blog> blogList = null;
+        System.out.println("storeId="+storeId);
         if(isReview == 1){
             blogList = blogService.fetchReview(storeId);
         }else{
             blogList = blogService.fetchAll(storeId);
         }
+        System.out.println("blogList="+ JSONObject.toJSONString(blogList));
         List<BlogWrapper> wrapperList = new ArrayList<>(blogList.size());
         for(Blog blog : blogList){
             List<BlogPic> picList = blogService.fetchPics(blog.getId());
@@ -107,6 +110,7 @@ public class BlogController {
         Map<String,Object> retMap = new HashMap<>();
         retMap.put("rows",wrapperList);
         retMap.put("size",wrapperList.size());
+        System.out.println("wrapperList="+ JSONObject.toJSONString(wrapperList));
         return Response.succ(retMap);
     }
 
